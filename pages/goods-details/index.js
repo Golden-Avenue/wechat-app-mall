@@ -2,6 +2,7 @@ const WXAPI = require('../../wxapi/main')
 const app = getApp();
 const WxParse = require('../../wxParse/wxParse.js');
 const regeneratorRuntime = require('../../utils/runtime')
+const SelectSizePrefix = "选择："
 
 Page({
   data: {
@@ -11,7 +12,7 @@ Page({
     goodsDetail: {},
     swiperCurrent: 0,
     hasMoreSelect: false,
-    selectSize: "选择：",
+    selectSize: SelectSizePrefix,
     selectSizePrice: 0,
     totalScoreToPay: 0,
     shopNum: 0,
@@ -69,14 +70,14 @@ Page({
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
     const goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
     if (goodsDetailRes.code == 0) {
-      var selectSizeTemp = "";
+      var selectSizeTemp = SelectSizePrefix;
       if (goodsDetailRes.data.properties) {
         for (var i = 0; i < goodsDetailRes.data.properties.length; i++) {
           selectSizeTemp = selectSizeTemp + " " + goodsDetailRes.data.properties[i].name;
         }
         that.setData({
           hasMoreSelect: true,
-          selectSize: that.data.selectSize + selectSizeTemp,
+          selectSize: selectSizeTemp,
           selectSizePrice: goodsDetailRes.data.basicInfo.minPrice,
           totalScoreToPay: goodsDetailRes.data.basicInfo.minScore
         });
