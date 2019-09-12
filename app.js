@@ -59,11 +59,15 @@ App({
       that.globalData.vipLevel = res.data
     })
     //  获取商城名称
-    WXAPI.queryConfig({
-      key: 'mallName'
-    }).then(function(res) {
+    WXAPI.queryConfigBatch('mallName,recharge_amount_min,ALLOW_SELF_COLLECTION').then(function(res) {
       if (res.code == 0) {
-        wx.setStorageSync('mallName', res.data.value);
+        res.data.forEach(config => {
+          wx.setStorageSync(config.key, config.value);
+          if (config.key === 'recharge_amount_min') {
+            that.globalData.recharge_amount_min = res.data.value;
+          }
+        })
+        
       }
     })
     WXAPI.scoreRules({
@@ -71,32 +75,6 @@ App({
     }).then(function(res) {
       if (res.code == 0) {        
         that.globalData.order_reputation_score = res.data[0].score;
-      }
-    })
-    // 获取充值的最低金额
-    WXAPI.queryConfig({
-      key: 'recharge_amount_min'
-    }).then(function(res) {
-      if (res.code == 0) {
-        that.globalData.recharge_amount_min = res.data.value;
-      }
-    })
-    // 获取砍价设置
-    WXAPI.kanjiaList().then(function(res) {
-      if (res.code == 0) {
-        that.globalData.kanjiaList = res.data.result;
-      }
-    })
-    // 判断是否登录
-    let token = wx.getStorageSync('token');
-    if (!token) {
-      that.goLoginPageTimeOut()
-      return
-    }
-    WXAPI.checkToken(token).then(function(res) {
-      if (res.code != 0) {
-        wx.removeStorageSync('token')
-        that.goLoginPageTimeOut()
       }
     })
   },
@@ -118,13 +96,49 @@ App({
         url: "/pages/start/start"
       })
     }, 1000)
-  },
+  },  
   onShow (e) {
+    const _this = this
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      _this.goLoginPageTimeOut()
+      return
+    }
+    WXAPI.checkToken(token).then(function (res) {
+      if (res.code != 0) {
+        wx.removeStorageSync('token')
+        _this.goLoginPageTimeOut()
+      }
+    })
+    wx.checkSession({
+      fail() {
+        _this.goLoginPageTimeOut()
+      }
+    })
     this.globalData.launchOption = e
     // 保存邀请人
     if (e && e.query && e.query.inviter_id) {
       wx.setStorageSync('referrer', e.query.inviter_id)
-    }
+      if (e.shareTicket) {
+        // 通过分享链接进来
+        wx.getShareInfo({
+          shareTicket: e.shareTicket,
+          success: res => {
+            // console.error(res)
+            // console.error({
+            //   referrer: e.query.inviter_id,
+            //   encryptedData: res.encryptedData,
+            //   iv: res.iv
+            // })
+            WXAPI.shareGroupGetScore(
+              e.query.inviter_id,
+              res.encryptedData,
+              res.iv
+            )
+          }
+        })
+      }
+    }    
   },
   globalData: {                
     isConnected: true,

@@ -8,6 +8,7 @@ Page({
    */
   data: {
     mallName: wx.getStorageSync('mallName'),
+    
   },
 
   /**
@@ -28,7 +29,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const _this = this
+    WXAPI.userDetail(wx.getStorageSync('token')).then(res => {
+      if (res.code === 0) {
+        _this.setData({
+          userDetail: res.data
+        })
+      }
+    })
   },
 
   /**

@@ -6,12 +6,14 @@
 
 ## 扫码体验
 
-<p>
 <img src="https://cdn.it120.cc/apifactory/2017/09/15/487409738ebb80c44eda01c46d59b20c.jpg" width="200px">
-<img src="https://cdn.it120.cc/apifactory/2018/12/28/86af021ee227269eae3ac7cfe2bd6e9d.jpeg" width="200px">
-<img src="https://cdn.it120.cc/apifactory/2018/04/01/b7b8f5a0fcfc72454ade8510ab929717.jpg" width="200px">
-<img src="https://cdn.it120.cc/apifactory/2018/04/04/570e9a77dbc9cacda176e98a4f2778c5.jpg" width="200px">
-</p>
+
+## 其他开源模板
+
+| 舔果果小铺 | 面馆风格小程序 |
+| :------: | :------: |
+| <img src="https://cdn.it120.cc/apifactory/2018/04/01/b7b8f5a0fcfc72454ade8510ab929717.jpg" width="200px"> | <img src="https://cdn.it120.cc/apifactory/2019/03/29/9e30cfe31eabcd218eb9c434f17e9295.jpg" width="200px"> | 
+| [开源地址](https://github.com/qindiandadudu/TianguoguoXiaopu) | [开源地址](https://gitee.com/javazj/noodle_shop_procedures) |
 
 ## 接口 & 后台声明
 
@@ -19,7 +21,7 @@
 
 - [接口 SDK](https://github.com/gooking/wxapi)
 
-- [免费后台](https://www.it120.cc/user)
+- [免费后台](https://admin.it120.cc)
 
 - [WeUI](https://github.com/Tencent/weui-wxss/)
 
@@ -78,7 +80,7 @@ module.exports = {
 这两个功能都是使用后台 “系统设置” --> “banner” 管理功能来实现的；
 后台发布banner的时候，自定义类型请分别填写  app  和  index；
 小程序会自动读取类型为 app 的banner图片作为启动展示图片；
-小程序会自动读取类型为 index 的banner图片作为首页头部的轮播图；
+小程序会自动读取类型为 new 的banner图片作为首页分类下的轮播图；
 ```
 
 ## 常见问题
