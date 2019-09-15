@@ -18,7 +18,7 @@ Page({
     youhuijine: 0, //优惠券金额
     curCoupon: null, // 当前选择使用的优惠券
     allowSelfCollection: '0', // 是否允许到店自提
-    peisongType: 'zq' // 配送方式 kd,zq 分别表示快递/到店自取
+    peisongType: 'kd' // 配送方式 kd,zq 分别表示快递/到店自取
   },
   onShow: function () {
     let allowSelfCollection = wx.getStorageSync('ALLOW_SELF_COLLECTION')
