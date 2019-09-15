@@ -48,16 +48,7 @@
         </navigator>
       </swiper>
     </view>
-    <scroll-view scroll-x>
-      <view class="category-box" style='width:{{category_box_width}}rpx;'>
-        <view class="category-list" wx:for="{{categories}}" wx:key="*this">
-          <view class="category-column {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick" id="{{item.id}}">
-            <image class="category-imgbox" src="{{item.icon}}"></image>
-            <view class="category-title">{{item.name}}</view>
-          </view>          
-        </view>
-      </view>
-    </scroll-view>
+
   </view>
   <view class="swiper-container">
     <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
@@ -73,6 +64,15 @@
       </block>
     </view>
   </view>
+    <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true" scroll-left="{{cateScrollTop}}">
+            <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+                <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
   <view class="weui-loadmore weui-loadmore_line" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">爆品推荐</view>
   </view>
