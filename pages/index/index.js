@@ -111,7 +111,7 @@ Page({
       })
     })
     WXAPI.goodsCategory().then(function(res) {
-      // let categories = [{
+      // let categories = [];
       //   id: 0,
       //   icon: '/images/fl.png',
       //   name: "全部"
@@ -130,6 +130,7 @@ Page({
       });
       that.getGoodsList(0);
     })
+    /*
     WXAPI.goods({
       recommendStatus: 1
     }).then(res => {
@@ -139,10 +140,11 @@ Page({
         })
       }      
     })
+    */
     that.getCoupons()
     that.getNotice()
-    that.kanjiaGoods()
-    that.pingtuanGoods()
+    //that.kanjiaGoods()
+    //that.pingtuanGoods()
   },
   onPageScroll(e) {
     let scrollTop = this.data.scrollTop
