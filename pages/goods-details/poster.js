@@ -77,6 +77,7 @@ Page({
   downLoadQrcode(_imageSize) {
     const _this = this
     WXAPI.wxaQrcode({
+      token: wx.getStorageSync('token'),
       scene: _this.data.goodsid +',' + wx.getStorageSync('uid'),
       page: 'pages/goods-details/index',
       is_hyaline: true,
