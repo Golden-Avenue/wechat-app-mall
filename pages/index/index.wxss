@@ -131,6 +131,12 @@ swiper-item image {
   background-color: #fff;
   overflow: hidden;
 }
+.type-navbar{
+  white-space: nowrap;
+  height: 88rpx;
+  width: 100%;
+  background-color: #fff;
+}
 .type-box{
   width:160rpx;
   box-sizing: content-box;
