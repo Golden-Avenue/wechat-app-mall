@@ -151,6 +151,3 @@
   </view>
   <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
 </view>
-<view class='coupons-float' bindtap="goCoupons">
-  <image src="/images/gift.png"></image>
-</view>
