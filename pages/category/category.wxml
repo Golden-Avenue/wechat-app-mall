@@ -24,7 +24,7 @@
         <view class='goods-item'>
 
           <view class="goods-description">
-            <image class='goods-pic' mode='aspectFill' lazy-load="true" src="{{goods.pic}}_m" bindtap="toDetailsTap" data-id="{{goods.id}}"></image>
+            <image class='goods-pic' mode='aspectFit' lazy-load="true" src="{{goods.pic}}_m" bindtap="toDetailsTap" data-id="{{goods.id}}"></image>
 
             <view class='goods-info'>
               <view class="goods-title" bindtap="toDetailsTap" data-id="{{goods.id}}">{{goods.name}}</view>
