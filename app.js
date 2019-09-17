@@ -77,6 +77,9 @@ App({
         that.globalData.order_reputation_score = res.data[0].score;
       }
     })
+    wx.goLogin = () => {
+      that.goLoginPageTimeOut();
+    }
   },
   goLoginPageTimeOut: function() {
     if (this.navigateToLogin){
@@ -84,11 +87,16 @@ App({
     }
     wx.removeStorageSync('token')
     this.navigateToLogin = true
-    setTimeout(function() {
+    //setTimeout(function() {
       wx.navigateTo({
         url: "/pages/authorize/index"
       })
-    }, 1000)
+    //}, 1000)
+  },
+  goMy: function () {
+    wx.reLaunch({
+      url: "/pages/my/index"
+    })
   },
   goStartIndexPage: function() {
     setTimeout(function() {
