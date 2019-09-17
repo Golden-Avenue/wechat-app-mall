@@ -107,7 +107,7 @@ App({
   },  
   onShow (e) {
     const _this = this
-    const token = wx.getStorageSync('token');
+    /*const token = wx.getStorageSync('token');
     if (!token) {
       _this.goLoginPageTimeOut()
       return
@@ -122,7 +122,7 @@ App({
       fail() {
         _this.goLoginPageTimeOut()
       }
-    })
+    })*/
     this.globalData.launchOption = e
     // 保存邀请人
     if (e && e.query && e.query.inviter_id) {
