@@ -57,14 +57,15 @@
         </scroll-view>
     </view>
     <view class="goods-container">
-        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
-           <view class="img-box">
+        <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}">
+           <view class="img-box" bindtap="toDetailsTap" data-id="{{item.id}}">
               <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true"/>
            </view>
            <view class="goods-title">{{item.name}}</view>
            <view style='display:flex;'>
             <view class="goods-price">¥ {{item.minPrice}}</view>
             <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+            <addSubGoods goodsId="{{item.id}}" goodsDetail="{{item}}" buyNum="{{item.buyNum}}" stores="{{item.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
            </view>           
         </view>
     </view>
