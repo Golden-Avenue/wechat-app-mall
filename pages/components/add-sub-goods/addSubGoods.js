@@ -50,6 +50,10 @@ Component({
           }
           //更新购物车信息
           that.updateShopCarInfo(res.data);
+          wx.showToast({
+            title: '加购物车成功',
+            icon: 'none',
+          });
         }
       });
     },
