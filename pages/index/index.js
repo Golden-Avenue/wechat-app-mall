@@ -69,7 +69,7 @@ Page({
     WXAPI.banners({
       type: 'index'
     }).then(function(res) {
-      if (res.code == 700) {
+      if (res.code == 700 || res.code == 404) {
         wx.showModal({
           title: '提示',
           content: '请在后台添加 banner 轮播图片，自定义类型填写 index',
