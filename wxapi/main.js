@@ -1,6 +1,6 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 const CONFIG = require('./config.js')
-const API_BASE_URL = 'https://sale.calluu.cn'
+const API_BASE_URL = 'https://sale.calluu.cn/wxa'
 
 
 const request = (url, needSubDomain, method, data) => {
