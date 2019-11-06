@@ -83,21 +83,21 @@ App({
         that.globalData.kanjiaList = res.data.result;
       }
     })
+    wx.goLogin = () => {
+      that.goLoginPageTimeOut();
+    }
     // 判断是否登录
-    /*let token = wx.getStorageSync('token');
+    let token = wx.getStorageSync('token');
     if (!token) {
-      that.goLoginPageTimeOut()
+      //that.goLoginPageTimeOut()
       return
     }
     WXAPI.checkToken(token).then(function(res) {
       if (res.code != 0) {
         wx.removeStorageSync('token')
-        that.goLoginPageTimeOut()
+        //that.goLoginPageTimeOut()
       }
-    })*/
-    wx.goLogin = () => {
-      that.goLoginPageTimeOut();
-    }
+    })
   },
   goLoginPageTimeOut: function() {
     if (this.navigateToLogin){
