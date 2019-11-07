@@ -96,6 +96,9 @@ App({
       if (res.code != 0) {
         wx.removeStorageSync('token')
         //that.goLoginPageTimeOut()
+        wx.removeStorageSync('userid')
+      }else{
+        wx.setStorageSync('userid', res.data.base.userid);
       }
     })
   },
