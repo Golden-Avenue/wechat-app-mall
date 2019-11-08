@@ -24,7 +24,7 @@ Page({
       WXAPI.banners({
         type: 'app'
       }).then(function (res) {
-        if (res.code == 700) {
+        if (res.code == 700 || res.code == 404) {
           wx.switchTab({
             url: '/pages/index/index',
           });
