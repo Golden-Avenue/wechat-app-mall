@@ -129,7 +129,7 @@ Page({
       });
       that.getGoodsList(0);
     })
-    /*
+    
     WXAPI.goods({
       recommendStatus: 1
     }).then(res => {
@@ -139,11 +139,11 @@ Page({
         })
       }      
     })
-    */
+    
     that.getCoupons()
     that.getNotice()
     //that.kanjiaGoods()
-    //that.pingtuanGoods()
+    that.pingtuanGoods()
   },
   onPageScroll(e) {
     let scrollTop = this.data.scrollTop
