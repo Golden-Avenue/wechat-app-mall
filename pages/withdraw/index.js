@@ -68,15 +68,15 @@ Page({
     wx.navigateBack({})
   },
   bindSave: function(e) {
-    var that = this;
-    WXAPI.addTempleMsgFormid({
-      token: wx.getStorageSync('token'),
-      type: 'form',
-      formId: e.detail.formId
-    })
+    const that = this;
+    let minWidthAmount = wx.getStorageSync('WITHDRAW_MIN');
+    if (!minWidthAmount) {
+      minWidthAmount = 0
+    }
+    WXAPI.addTempleMsgFormid(wx.getStorageSync('token'), 'form', e.detail.formId)
     var amount = e.detail.value.amount;
 
-    if (amount == "" || amount * 1 < 100) {
+    if (!amount) {
       wx.showModal({
         title: '错误',
         content: '请填写正确的提现金额',
@@ -84,7 +84,15 @@ Page({
       })
       return
     }
-    WXAPI.withDrawApply(amount, wx.getStorageSync('token')).then(function(res) {
+    if (amount * 1 < minWidthAmount) {
+      wx.showModal({
+        title: '错误',
+        content: '提现金额不能低于' + minWidthAmount + '元',
+        showCancel: false
+      })
+      return
+    }
+    WXAPI.withDrawApply(wx.getStorageSync('token'), amount).then(function(res) {
       if (res.code == 0) {
         wx.showModal({
           title: '成功',
