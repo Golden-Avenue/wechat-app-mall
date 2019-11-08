@@ -42,7 +42,7 @@ Component({
           if (buyNum > stores) {
             wx.showModal({
               title: '提示',
-              content: res.data.basicInfo.name + ' 库存不足，请重新购买',
+              content: res.data.basicInfo.name + ' 已售罄，待补货',
               showCancel: false,
               duration: 200
             });
