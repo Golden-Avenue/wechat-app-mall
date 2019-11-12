@@ -26,9 +26,9 @@
         <view class="goods-price" style="color:#999;font-size:24rpx;">购买{{goodsDetail.basicInfo.numberOrders}}次</view>
         <view class="goods-price" style="color:#999;font-size:24rpx;">共收到 {{goodsDetail.basicInfo.numberGoodReputation}} 次好评</view>
         <view class="goods-info-fx">
-          <image src='../../images/qd.png' />
+          <image src='../../images/share.png' />
           <button open-type="share">分享</button>
-          <text>分享有赏</text>
+          <text>分享一下</text>
         </view>
    </view>
    <view wx:if="{{curGoodsKanjia}}" class="row-arrow" bindtap="goKanjia">
