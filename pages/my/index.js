@@ -1,6 +1,8 @@
 const app = getApp()
 const CONFIG = require('../../config.js')
 const WXAPI = require('../../wxapi/main')
+const TOOLS = require('../../utils/tools.js')
+
 Page({
 	data: {
     balance:0.00,
@@ -34,6 +36,8 @@ Page({
     }
     this.getUserApiInfo();
     this.getUserAmount();
+    // 获取购物车数据，显示TabBarBadge
+    TOOLS.showTabBarBadge();
   },
   aboutUs : function () {
     wx.showModal({
