@@ -34,6 +34,10 @@
       <image class="icon" src="/images/order/pj.png" background-size="cover"></image>
       <view class='text'>待评价</view>
     </view>
+    <view class='item' bindtap='goOrder' data-type="99">
+      <image class="icon" src="/images/order/shouhou.png" background-size="cover"></image>
+      <view class='text'>退款/售后</view>
+    </view>
   </view>
 
   <block wx:if="{{vipLevel > 0}}">
@@ -50,6 +54,16 @@
   <view class="my-item" wx:if="{{apiUserInfoMap.base.isSeller}}">
     <navigator url="/pages/fx/commisionLog" hover-class="navigator-hover">返佣明细</navigator>
   </view>
+  </block>
+
+  <block wx:if="{{vipLevel > 0}}">
+    <view style="height:10rpx;background: #eee;width:100%;"></view>
+    <view class="my-item">
+      <navigator url="/pages/invoice/apply" hover-class="navigator-hover">申请开票</navigator>
+    </view>
+    <view class="my-item">
+      <navigator url="/pages/invoice/list" hover-class="navigator-hover">开票记录</navigator>
+    </view>
   </block>
 
   <view style="height:10rpx;background: #eee;width:100%;"></view>
