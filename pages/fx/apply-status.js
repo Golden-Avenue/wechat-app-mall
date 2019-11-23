@@ -69,6 +69,7 @@ Page({
       mask: true
     })
     WXAPI.wxaQrcode({
+      token: wx.getStorageSync('token'),
       scene: 'inviter_id=' + wx.getStorageSync('uid'),
       page: 'pages/index/index',
       is_hyaline: true,

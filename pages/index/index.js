@@ -93,7 +93,7 @@ Page({
     WXAPI.banners({
       type: 'new'
     }).then(function(res) {
-      if (res.code == 700) {
+      if (res.code == 700 || res.code == 404) {
         wx.showModal({
           title: '提示',
           content: '请在后台添加 banner 轮播图片，自定义类型填写 new',
@@ -217,6 +217,7 @@ Page({
   },
   toSearch: function() {
     this.setData({
+      activeCategoryId: 0,
       curPage: 1
     });
     this.getGoodsList(this.data.activeCategoryId);
