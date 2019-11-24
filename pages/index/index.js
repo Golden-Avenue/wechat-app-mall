@@ -215,6 +215,11 @@ Page({
       }
     })
   },
+  listenerSearchInput: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    })
+  },
   toSearch: function() {
     this.setData({
       activeCategoryId: 0,
