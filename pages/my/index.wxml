@@ -116,6 +116,6 @@
   </view>
   
   <view style="height:20rpx;background: #eee;width:100%;"></view>
-  <view class="version">Powered by EastWorld v {{version}}</view>
+  <view class="version">Powered by Oejia 客优商城 v {{version}}</view>
   <view style="height:20rpx;background: #eee;width:100%;"></view>
 </view>
