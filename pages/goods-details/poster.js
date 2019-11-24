@@ -49,7 +49,7 @@ Page({
       src: _this.data.pic,
       success: (res) => {
         let imageSize = imageUtil(res.width, res.height)
-        const additionHeight = 250
+        const additionHeight = 220
         _this.setData({
           canvasstyle: 'height:' + (imageSize.imageHeight + additionHeight) + 'px'
         })
@@ -100,7 +100,7 @@ Page({
             ctx.setFontSize(12)
             ctx.setFillStyle('#aaa')
             ctx.setTextAlign('center')
-            ctx.fillText('长按识别小程序码查看详情', _imageSize.windowWidth / 2, _imageSize.imageHeight + 50 + left + 50)
+            ctx.fillText('长按识别小程序码查看详情', _imageSize.windowWidth / 2, _imageSize.imageHeight + 50 + left + 20)
 
             setTimeout(function () {
               wx.hideLoading()
