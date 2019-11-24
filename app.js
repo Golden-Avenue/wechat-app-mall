@@ -80,6 +80,22 @@ App({
     wx.goLogin = () => {
       that.goLoginPageTimeOut();
     }
+    // 判断是否登录
+    let token = wx.getStorageSync('token');
+    if (!token) {
+      //that.goLoginPageTimeOut()
+      return
+    }
+    WXAPI.checkToken(token).then(function(res) {
+      if (res.code != 0) {
+        wx.removeStorageSync('token')
+        //that.goLoginPageTimeOut()
+        wx.removeStorageSync('userInfo')
+        wx.removeStorageSync('userid')
+      }else{
+        wx.setStorageSync('userid', res.data.base.userid);
+      }
+    })
   },
   goLoginPageTimeOut: function() {
     if (this.navigateToLogin){

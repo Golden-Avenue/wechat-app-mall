@@ -159,19 +159,16 @@ module.exports = {
   },
   goods: (data) => {
     data.token = wx.getStorageSync('token');
-    data.userid = wx.getStorageSync('userid');
     return request('/shop/goods/list', true, 'post', data)
   },
   goodsDetail: (id) => {
     return request('/shop/goods/detail', true, 'get', {
       id: id,
-      token: wx.getStorageSync('token'),
-      userid: wx.getStorageSync('userid')
+      token: wx.getStorageSync('token')
     })
   },
   goodsPrice: (data) => {
     data.token = wx.getStorageSync('token');
-    data.userid = wx.getStorageSync('userid');
     return request('/shop/goods/price', true, 'post', data)
   },
   goodsReputation: (data) => {
