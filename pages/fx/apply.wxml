@@ -42,3 +42,5 @@
     <button class="weui-btn" type="primary" formType="submit">申请成为分销商</button>
   </view>
 </form>
+
+<float-menu /> 

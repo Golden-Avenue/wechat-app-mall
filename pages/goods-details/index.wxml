@@ -258,3 +258,5 @@
   <view class="p2"></view>
   <view class="p3" bindtap="closeShareDiv"> 取消分享 </view>
 </view>
+
+<float-menu /> 
