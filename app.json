@@ -2,6 +2,8 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
+    "pages/category/category",
+    "pages/goods/list",
     "pages/goods-details/index",
     "pages/goods-details/poster",
     "pages/shop-cart/index",
@@ -23,7 +25,6 @@
     "pages/asset/index",
     "pages/score/index",
     "pages/sign/index",
-    "pages/category/category",
     "pages/maidan/index",
     "pages/fx/apply",
     "pages/fx/apply-status",
