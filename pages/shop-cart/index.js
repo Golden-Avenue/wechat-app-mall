@@ -365,6 +365,61 @@ Page({
 
     }
   },
+  inputBuyNum: function (e) {
+    this.setData({
+      showInputModal: true,
+      buyNum: e.currentTarget.dataset.buynum,
+      goodsId: e.currentTarget.dataset.goodsid,
+      goodsName: e.currentTarget.dataset.goodsname
+    });
+  },
+  onCancelBuyNum: function () {
+    this.setData({
+      showInputModal: false
+    });
+  },
+
+  onConfirmBuyNum: function (e) {
+    this.setData({
+      showInputModal: false
+    });
+
+    var goodsId = this.data.goodsId;
+    var number = e.detail.number;
+    var goodsName = this.data.goodsName;
+
+    let that = this;
+    WXAPI.goodsDetail(goodsId).then(function (res) {
+      if (res) {
+        let stores = res.data.basicInfo.stores;
+        if (number > stores) {
+          wx.showModal({
+            title: '提示',
+            content: goodsName + ' 库存不足，请重新购买',
+            showCancel: false,
+            duration: 200
+          });
+          return;
+        }
+        var shopCarInfo = wx.getStorageSync('shopCarInfo');
+        if (shopCarInfo && shopCarInfo.shopList && shopCarInfo.shopList.length > 0) {
+          for (var i = 0; i < shopCarInfo.shopList.length; i++) {
+            var item = shopCarInfo.shopList[i];
+            if (item.goodsId === goodsId) {
+              item.number = number;
+              break;
+            }
+          }
+        }
+        that.setData({
+          goodsList: {
+            list: shopCarInfo.shopList
+          }
+        });
+        that.setGoodsList(that.getSaveHide(), that.totalPrice(), that.allSelect(), that.noSelect(), shopCarInfo.shopList);
+      }
+    });
+  },
   navigateToPayOrder: function() {
     wx.hideLoading();
     wx.navigateTo({
