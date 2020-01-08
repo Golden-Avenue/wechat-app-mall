@@ -330,3 +330,4 @@ swiper-item image {
   border:none;
   position: relative;
 }
+@import "../template-jiesuan/template-jiesuan.wxss";

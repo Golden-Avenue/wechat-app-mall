@@ -162,4 +162,6 @@
     </view>
   </view>
   <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+  <import src="../template-jiesuan/template-jiesuan.wxml"/>
+  <template is="jiesuan-box" data="{{...jiesuanInfo}}"></template>
 </view>

@@ -12,6 +12,12 @@ Page({
     goodsWrap: [],
     categorySelected: "",
     goodsToView: "",
+    jiesuanInfo: {
+      hideSummaryPopup: true,
+      totalPrice: 0,
+      totalScore: 0,
+      shopNum: 0
+    },
     categoryToView: "",
   },
 
@@ -123,6 +129,95 @@ Page({
     })
 
   },
+  onTotalPriceChange: function (e) {
+    let hideSummaryPopup = true;
+    if (e.detail.totalPrice > 0) {
+      hideSummaryPopup = false;
+    }
+    this.setData({
+      jiesuanInfo: {
+        hideSummaryPopup: hideSummaryPopup,
+        totalPrice: e.detail.totalPrice,
+        totalScore: e.detail.totalScore,
+        shopNum: e.detail.shopNum
+      }
+    });
+
+  },
+
+
+  navigateToCartShop: function () {
+    wx.hideLoading();
+    wx.switchTab({
+      url: "/pages/shop-cart/index"
+    })
+  },
+  onShow: function () {
+    this.refreshTotalPrice();
+  },
+  resetGoodsBuyNum: function () {
+    var goodsWrap = this.data.goodsWrap;
+    if (goodsWrap.length > 0) {
+      for (var i = 0; i < goodsWrap.length; i++) {
+        var goods = goodsWrap[i].goods;
+        for (var j = 0; j < goods.length; j++) {
+          goods[j].buyNum = 0;
+        }
+      }
+    }
+  },
+  refreshTotalPrice: function () {
+    var shopCarInfo = wx.getStorageSync('shopCarInfo');
+    var goodsWrap = this.data.goodsWrap;
+    this.resetGoodsBuyNum();
+    let hideSummaryPopup = true;
+    let totalPrice = 0;
+    let totalScore = 0;
+    let shopNum = 0;
+    if (shopCarInfo) {
+      totalPrice = shopCarInfo.totalPrice;
+      totalScore = shopCarInfo.totalScore;
+      shopNum = shopCarInfo.shopNum;
+
+      if (shopNum > 0 && shopCarInfo.shopList && shopCarInfo.shopList.length > 0) {
+        hideSummaryPopup = false;
+        if (goodsWrap.length > 0) {
+          for (var j = 0; j < shopCarInfo.shopList.length; j++) {
+            var tmpShopCarMap = shopCarInfo.shopList[j];
+            if (tmpShopCarMap.active) {
+              for (var i = 0; i < goodsWrap.length; i++) {
+                var goods = goodsWrap[i].goods;
+                for (var p = 0; p < goods.length; p++) {
+                  if (tmpShopCarMap.goodsId === goods[p].id) {
+                    goods[p].buyNum = tmpShopCarMap.number;
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    this.setData({
+      jiesuanInfo: {
+        hideSummaryPopup: hideSummaryPopup,
+        totalPrice: totalPrice,
+        totalScore: totalScore,
+        shopNum: shopNum,
+      },
+      goodsWrap: goodsWrap
+    });
+  },
+  navigateToPayOrder: function (e) {
+    wx.hideLoading();
+    wx.navigateTo({
+      url: "/pages/to-pay-order/index"
+    })
+  },
+
+
   scroll: function(e) {
 
     if (this.categoryClick){

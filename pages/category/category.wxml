@@ -40,3 +40,6 @@
     </block>
   </scroll-view>
 </view>
+
+<import src="../template-jiesuan/template-jiesuan.wxml"/>
+<template is="jiesuan-box" data="{{...jiesuanInfo}}"></template>
