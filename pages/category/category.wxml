@@ -28,7 +28,10 @@
 
             <view class='goods-info'>
               <view class="goods-title" bindtap="toDetailsTap" data-id="{{goods.id}}">{{goods.name}}</view>
-              <view class="goods-price">￥{{goods.minPrice}}</view>
+              <view class='goods-price-line'>
+                  <view class="goods-price">￥{{goods.minPrice}}</view>
+                  <addSubGoods goodsId="{{goods.id}}" goodsDetail="{{goods}}" buyNum="{{goods.buyNum}}" stores="{{goods.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
+              </view>
             </view>
           </view>
 
