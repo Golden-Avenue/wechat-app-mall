@@ -97,3 +97,9 @@ page {
   height: 80px;
   justify-content: space-between;
 }
+.goods-price-line{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
