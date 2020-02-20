@@ -12,6 +12,7 @@ Page({
     goodsJsonStr: "",
     orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
     pingtuanOpenId: undefined, //拼团的话记录团号
+    remark: '',
 
     hasNoCoupons: true,
     coupons: [],
@@ -89,7 +90,7 @@ Page({
     var loginToken = wx.getStorageSync('token') // 用户登录 token
     var remark = ""; // 备注信息
     if (e) {
-      remark = this.data.remark || ""; // 备注信息
+      remark = this.data.remark; // 备注信息
     }
 
     var postData = {
