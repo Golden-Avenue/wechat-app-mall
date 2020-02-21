@@ -128,8 +128,8 @@
   <view class="goods-des-info" style="margin-top:35rpx;" wx:if="{{pingtuanList}}">
     <view class="label-title" style="border-bottom:1px solid #eee;">{{pingtuanList.length}}人在拼单，可直接参与</view>
     <view class="goods-text" style="margin-top:15rpx;border-bottom:1px solid #eee;" wx:for="{{pingtuanList}}" wx:key="id">
-      <view style="width:150rpx;float:left;">
-        <image style="width: 150rpx; height: 150rpx; border-radius: 50%;" src="{{item.apiExtUser.avatarUrl}}"></image>
+      <view style="width:150rpx;float:left;text-align:center;">
+        <image style="width: 100rpx; height: 100rpx; border-radius: 50%;" src="{{item.apiExtUser.avatarUrl}}"></image>
         <view style="width:150rpx;text-align:center;">{{item.apiExtUser.nick}}</view>
       </view>
       <view style="width:500rpx;float:left;margin-left:35rpx;">
