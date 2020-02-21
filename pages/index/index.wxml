@@ -107,7 +107,7 @@
     </view>
     <view class='tuan'>
       <view class='tuan-item' wx:for-items="{{pingtuanList}}" wx:key="*this">
-        <view class='tuan-goods-pic'>
+        <view class='tuan-goods-pic' bindtap="toDetailsTap" data-id="{{item.id}}">
           <image src="{{item.pic}}" mode="aspectFill" lazy-load='{{true}}' />
         </view>
         <view class='tuan-title'>{{item.name}}</view>
