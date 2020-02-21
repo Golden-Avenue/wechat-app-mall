@@ -1,4 +1,4 @@
-const WXAPI = require('apifm-wxapi')
+const WXAPI = require('../../wxapi/main')
 Page({
 
   /**
