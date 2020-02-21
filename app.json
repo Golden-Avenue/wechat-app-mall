@@ -2,6 +2,8 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
+    "pages/notice/index",
+    "pages/notice/show",
     "pages/category/category",
     "pages/goods/list",
     "pages/goods-details/index",
@@ -15,7 +17,6 @@
     "pages/order/refundApply",
     "pages/wuliu/index",
     "pages/my/index",
-    "pages/notice/show",
     "pages/recharge/index",
     "pages/withdraw/index",
     "pages/kanjia/index",
