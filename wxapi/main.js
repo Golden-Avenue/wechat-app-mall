@@ -1,6 +1,6 @@
 // 小程序开发api接口工具包，https://github.com/gooking/wxapi
 const CONFIG = require('./config.js')
-const API_BASE_URL = 'https://api.it120.cc'
+const API_BASE_URL = 'https://sale.calluu.cn/wxa'
 
 
 const request = (url, needSubDomain, method, data) => {
@@ -14,6 +14,9 @@ const request = (url, needSubDomain, method, data) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success(request) {
+        if ([300, 901, 10000].indexOf(request.data.code)>=0){
+          wx.goLogin();
+        }
         resolve(request.data)
       },
       fail(error) {
@@ -155,14 +158,17 @@ module.exports = {
     return request('/shop/goods/category/all', true, 'get')
   },
   goods: (data) => {
+    data.token = wx.getStorageSync('token');
     return request('/shop/goods/list', true, 'post', data)
   },
   goodsDetail: (id) => {
     return request('/shop/goods/detail', true, 'get', {
-      id
+      id: id,
+      token: wx.getStorageSync('token')
     })
   },
   goodsPrice: (data) => {
+    data.token = wx.getStorageSync('token');
     return request('/shop/goods/price', true, 'post', data)
   },
   goodsReputation: (data) => {

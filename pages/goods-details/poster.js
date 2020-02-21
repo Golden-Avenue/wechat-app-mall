@@ -49,7 +49,7 @@ Page({
       src: _this.data.pic,
       success: (res) => {
         let imageSize = imageUtil(res.width, res.height)
-        const additionHeight = 300
+        const additionHeight = 220
         _this.setData({
           canvasstyle: 'height:' + (imageSize.imageHeight + additionHeight) + 'px'
         })
@@ -58,15 +58,15 @@ Page({
         ctx.fillRect(0, 0, imageSize.windowWidth, imageSize.imageHeight + additionHeight)
         ctx.drawImage(res.path, imageSize.x, imageSize.y, imageSize.imageWidth, imageSize.imageHeight)
 
-        ctx.setFontSize(16)
-        ctx.setFillStyle('#e64340')
-        ctx.setTextAlign('left')
-        let name = _this.data.name
-        ctx.fillText(name, 10, imageSize.imageHeight + 30)
+        //ctx.setFontSize(16)
+        //ctx.setFillStyle('#e64340')
+        //ctx.setTextAlign('left')
+        //let name = _this.data.name
+        //ctx.fillText(name, 10, imageSize.imageHeight + 30)
 
-        ctx.moveTo(10, imageSize.imageHeight + 50)
+        ctx.moveTo(10, imageSize.imageHeight + 30)
         ctx.setLineWidth(1)
-        ctx.lineTo(imageSize.windowWidth - 10, imageSize.imageHeight + 50)
+        ctx.lineTo(imageSize.windowWidth - 10, imageSize.imageHeight + 30)
         ctx.setStrokeStyle('#eee')
         ctx.stroke()
 
@@ -77,6 +77,7 @@ Page({
   downLoadQrcode(_imageSize) {
     const _this = this
     WXAPI.wxaQrcode({
+      token: wx.getStorageSync('token'),
       scene: _this.data.goodsid +',' + wx.getStorageSync('uid'),
       page: 'pages/goods-details/index',
       is_hyaline: true,
@@ -94,12 +95,12 @@ Page({
           src: imageUrl,
           success: (res) => {
             let left = _imageSize.windowWidth / 3
-            ctx.drawImage(res.path, left, _imageSize.imageHeight + 80, _imageSize.windowWidth / 3, _imageSize.windowWidth / 3)
-            
+            ctx.drawImage(res.path, left, _imageSize.imageHeight + 50, _imageSize.windowWidth / 3, _imageSize.windowWidth / 3)
+
             ctx.setFontSize(12)
-            ctx.setFillStyle('#e64340')
+            ctx.setFillStyle('#aaa')
             ctx.setTextAlign('center')
-            ctx.fillText('长按识别小程序码 即可买买买~', _imageSize.windowWidth / 2, _imageSize.imageHeight + 80 + left + 50)
+            ctx.fillText('长按识别小程序码查看详情', _imageSize.windowWidth / 2, _imageSize.imageHeight + 50 + left + 20)
 
             setTimeout(function () {
               wx.hideLoading()

@@ -89,7 +89,7 @@ Page({
     WXAPI.banners({
       type: 'new'
     }).then(function(res) {
-      if (res.code == 700) {
+      if (res.code == 700 || res.code == 404) {
         wx.showModal({
           title: '提示',
           content: '请在后台添加 banner 轮播图片，自定义类型填写 new',
@@ -106,7 +106,30 @@ Page({
         icon: 'none'
       })
     })
+<<<<<<< HEAD
     this.categories()
+=======
+    WXAPI.goodsCategory().then(function(res) {
+      let categories = [{
+        id: 0,
+        icon: '/images/fl.png',
+        name: "全部"
+      }];
+      if (res.code == 0) {
+        categories = categories.concat(res.data)
+      }
+      const _n = 1;//Math.ceil(categories.length / 2)
+      // const _n = Math.ceil(categories.length)
+      that.setData({
+        categories: categories,
+        category_box_width: 150 * _n,
+        activeCategoryId: 0,
+        curPage: 1
+      });
+      that.getGoodsList(0);
+    })
+    /*
+>>>>>>> f4
     WXAPI.goods({
       recommendStatus: 1
     }).then(res => {
@@ -116,10 +139,11 @@ Page({
         })
       }      
     })
+    */
     that.getCoupons()
     that.getNotice()
-    that.kanjiaGoods()
-    that.pingtuanGoods()
+    //that.kanjiaGoods()
+    //that.pingtuanGoods()
   },
   onShow: function(e){
     // 获取购物车数据，显示TabBarBadge
@@ -215,9 +239,17 @@ Page({
     })
   },
   toSearch: function() {
+<<<<<<< HEAD
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })
+=======
+    this.setData({
+      activeCategoryId: 0,
+      curPage: 1
+    });
+    this.getGoodsList(this.data.activeCategoryId);
+>>>>>>> f4
   },
   onReachBottom: function() {
     this.setData({

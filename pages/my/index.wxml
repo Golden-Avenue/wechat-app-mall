@@ -71,7 +71,7 @@
   </block>
 
   <view style="height:10rpx;background: #eee;width:100%;"></view>
-  <view class="my-item" wx:if="{{vipLevel > 0}}">
+  <view class="my-item" wx:if="{{vipLevel < 0}}">
     <navigator url="/pages/maidan/index" hover-class="navigator-hover">优惠买单</navigator>
   </view>
   <view class="my-item">
@@ -93,19 +93,33 @@
     {{userMobile}}
   </view>
   <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view wx:if="{{username}}" class="my-item" style="border:none;padding-right:150rpx;width:auto;">
+    当前用户 {{nickname}}
+  </view>
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
   <view class="about" bindtap="aboutUs">
     关于我们
   </view>
 
-  <view style="height:20rpx;background: #eee;width:100%;"></view>
-  <view wx:if="{{!userMobile}}" class="bind-phone-number">
+  <view wx:if="{{!userMobile}}" style="height:20rpx;background: #eee;width:100%;"></view>
+  <view wx:if="{{!userMobile}}" class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号码</button>
   </view>
+
   <view class="my-item to-authorize">
     <button type="warn" bindtap="relogin">重新授权登录</button>
   </view>
+
+  <view wx:if="{{!username}}" style="height:20rpx;background: #eee;width:100%;"></view>
+  <view wx:if="{{!username}}" class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
+    <button type="primary" bindtap="bingLogin">绑定用户</button>
+  </view>
+  <view wx:if="{{username}}" style="height:20rpx;background: #eee;width:100%;"></view>
+  <view wx:if="{{username}}" class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
+    <button type="default" bindtap="bingLogin">重新绑定用户</button>
+  </view>
   
   <view style="height:20rpx;background: #eee;width:100%;"></view>
-  <view class="version">Powered by EastWorld v {{version}}</view>
+  <view class="version">Powered by Oejia 客优商城 v {{version}}</view>
   <view style="height:20rpx;background: #eee;width:100%;"></view>
 </view>

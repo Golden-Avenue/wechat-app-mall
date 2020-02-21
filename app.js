@@ -78,6 +78,25 @@ App({
         that.globalData.order_reputation_score = res.data[0].score;
       }
     })
+    wx.goLogin = () => {
+      that.goLoginPageTimeOut();
+    }
+    // 判断是否登录
+    let token = wx.getStorageSync('token');
+    if (!token) {
+      //that.goLoginPageTimeOut()
+      return
+    }
+    WXAPI.checkToken(token).then(function(res) {
+      if (res.code != 0) {
+        wx.removeStorageSync('token')
+        //that.goLoginPageTimeOut()
+        wx.removeStorageSync('userInfo')
+        wx.removeStorageSync('userid')
+      }else{
+        wx.setStorageSync('userid', res.data.base.userid);
+      }
+    })
   },
   goLoginPageTimeOut: function() {
     if (this.navigateToLogin){
@@ -85,11 +104,16 @@ App({
     }
     wx.removeStorageSync('token')
     this.navigateToLogin = true
-    setTimeout(function() {
+    //setTimeout(function() {
       wx.navigateTo({
         url: "/pages/authorize/index"
       })
-    }, 1000)
+    //}, 1000)
+  },
+  goMy: function () {
+    wx.reLaunch({
+      url: "/pages/my/index"
+    })
   },
   goStartIndexPage: function() {
     setTimeout(function() {
@@ -99,7 +123,23 @@ App({
     }, 1000)
   },  
   onShow (e) {
-    console.log('app.js --- onShow')    
+    const _this = this
+    /*const token = wx.getStorageSync('token');
+    if (!token) {
+      _this.goLoginPageTimeOut()
+      return
+    }
+    WXAPI.checkToken(token).then(function (res) {
+      if (res.code != 0) {
+        wx.removeStorageSync('token')
+        _this.goLoginPageTimeOut()
+      }
+    })
+    wx.checkSession({
+      fail() {
+        _this.goLoginPageTimeOut()
+      }
+    })*/
     this.globalData.launchOption = e
     // 保存邀请人
     if (e && e.query && e.query.inviter_id) {

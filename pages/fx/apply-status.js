@@ -74,6 +74,7 @@ Page({
       mask: true
     })
     WXAPI.wxaQrcode({
+      token: wx.getStorageSync('token'),
       scene: 'inviter_id=' + wx.getStorageSync('uid'),
       page: 'pages/index/index',
       is_hyaline: true,
@@ -97,8 +98,8 @@ Page({
           canvasHeight: qrcodeWidth
         })
         ctx = wx.createCanvasContext('firstCanvas')
-        // ctx.setFillStyle('#fff')
-        // ctx.fillRect(0, 0, imageSize.windowWidth, imageSize.imageHeight + additionHeight + qrcodeWidth)
+        ctx.setFillStyle('#fff')
+        ctx.fillRect(0, 0, imageSize.windowWidth, imageSize.imageHeight + qrcodeWidth)
         ctx.drawImage(res.path, (imageSize.windowWidth - qrcodeWidth) / 2, 0, qrcodeWidth, qrcodeWidth)
         setTimeout(function () {
           wx.hideLoading()

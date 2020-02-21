@@ -41,7 +41,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    app.navigateToLogin = false;
   },
 
   /**
@@ -77,6 +77,11 @@ Page({
         icon: 'none',
       })
     }
+  },
+  bindCancel: function() {
+    wx.switchTab({
+      url: "/pages/index/index"
+    });
   },
   login: function() {
     const that = this;
@@ -114,6 +119,7 @@ Page({
           }
           wx.setStorageSync('token', res.data.token)
           wx.setStorageSync('uid', res.data.uid)
+          wx.setStorageSync('userid', res.data.info.base.userid) 
           // 回到原来的地方放
           app.navigateToLogin = false
           wx.navigateBack();
@@ -134,6 +140,44 @@ Page({
             let referrer_storge = wx.getStorageSync('referrer');
             if (referrer_storge) {
               referrer = referrer_storge;
+            }
+            if (0) {
+
+              wx.showModal({
+                title: '绑定并登录系统账号？',
+                content: '',
+                success: function (res) {
+                  if (res.confirm) {
+                    
+                    var registerData = {
+                      code: code,
+                      encryptedData: encryptedData,
+                      iv: iv,
+                      referrer: referrer
+                    }
+                    wx.setStorageSync('registerData', registerData)
+                    wx.navigateTo({
+                      url: "/pages/bind-login/index"
+                    })
+                    return;
+
+                  }else{
+
+                    WXAPI.register({
+                      code: code,
+                      encryptedData: encryptedData,
+                      iv: iv,
+                      referrer: referrer
+                    }).then(function (res) {
+                      wx.hideLoading();
+                      that.login();
+                    })
+                    
+                  }
+                }
+              })
+              return;
+
             }
             // 下面开始调用注册接口
             WXAPI.register( {

@@ -42,7 +42,7 @@ Page({
   aboutUs : function () {
     wx.showModal({
       title: '关于我们',
-      content: '本系统基于开源小程序商城系统 https://github.com/EastWorld/wechat-app-mall 搭建，祝大家使用愉快！',
+      content: '本系统基于Oejia客优商城系统 www.calluu.cn 搭建，欢迎垂询',
       showCancel:false
     })
   },
@@ -90,6 +90,10 @@ Page({
         if (res.data.base.mobile) {
           _data.userMobile = res.data.base.mobile
         }
+        if (res.data.base.username) {
+          _data.username = res.data.base.username;
+          _data.nickname = res.data.base.nickname;
+        }
         that.setData(_data);
       }
     })
@@ -109,6 +113,16 @@ Page({
   relogin:function(){
     app.navigateToLogin = false;
     app.goLoginPageTimeOut()
+  },
+  bingLogin: function () {
+    const token = wx.getStorageSync('token');
+    if (token){
+      wx.navigateTo({
+        url: "/pages/bind-login/index"
+      })
+    }else{
+      this.relogin();
+    }
   },
   goAsset: function () {
     wx.navigateTo({

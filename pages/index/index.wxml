@@ -61,6 +61,7 @@
         </view>
       </view>
     </scroll-view>
+
   </view>
   <view class="swiper-container">
     <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
@@ -76,6 +77,15 @@
       </block>
     </view>
   </view>
+    <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true" scroll-left="{{cateScrollTop}}">
+            <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+                <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
   <view class="weui-loadmore weui-loadmore_line" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">爆品推荐</view>
   </view>
@@ -143,7 +153,7 @@
   <view class="goods-container">
     <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
-        <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />
+        <image src="{{item.pic}}_m" class="image" mode="aspectFit" lazy-load="true" />
       </view>
       <view class="goods-title">{{item.name}}</view>
       <view style='display:flex;'>

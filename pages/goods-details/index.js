@@ -68,7 +68,7 @@ Page({
   async getGoodsDetailAndKanjieInfo(goodsId) {
     const that = this;
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
-    const goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
+    const goodsKanjiaSetRes = {};//await WXAPI.kanjiaSet(goodsId)
     if (goodsDetailRes.code == 0) {
       var selectSizeTemp = SelectSizePrefix;
       if (goodsDetailRes.data.properties) {
