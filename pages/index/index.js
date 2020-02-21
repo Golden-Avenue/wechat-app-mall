@@ -106,10 +106,8 @@ Page({
         icon: 'none'
       })
     })
-<<<<<<< HEAD
     this.categories()
-=======
-    WXAPI.goodsCategory().then(function(res) {
+    /*WXAPI.goodsCategory().then(function(res) {
       let categories = [{
         id: 0,
         icon: '/images/fl.png',
@@ -127,9 +125,8 @@ Page({
         curPage: 1
       });
       that.getGoodsList(0);
-    })
-    /*
->>>>>>> f4
+    })*/
+
     WXAPI.goods({
       recommendStatus: 1
     }).then(res => {
@@ -139,11 +136,11 @@ Page({
         })
       }      
     })
-    */
+
     that.getCoupons()
     that.getNotice()
     //that.kanjiaGoods()
-    //that.pingtuanGoods()
+    that.pingtuanGoods()
   },
   onShow: function(e){
     // 获取购物车数据，显示TabBarBadge
@@ -239,17 +236,9 @@ Page({
     })
   },
   toSearch: function() {
-<<<<<<< HEAD
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
     })
-=======
-    this.setData({
-      activeCategoryId: 0,
-      curPage: 1
-    });
-    this.getGoodsList(this.data.activeCategoryId);
->>>>>>> f4
   },
   onReachBottom: function() {
     this.setData({
