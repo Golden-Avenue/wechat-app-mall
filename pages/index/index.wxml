@@ -38,6 +38,7 @@
         </view>
       </navigator>
     </view> -->
+    <view class="notice-box" wx:if="{{noticeList}}">
     <view wx:if="{{noticeList}}" class="notice">
       <image class="notice_icon" src="/images/notice.png"></image>
       <swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
@@ -47,6 +48,8 @@
           </swiper-item>
         </navigator>
       </swiper>
+    </view>
+    <view class="more"><navigator url="/pages/notice/index">更多 ></navigator></view>
     </view>
     <scroll-view scroll-x>
       <view class="category-box" style='width:{{category_box_width}}rpx;'>
