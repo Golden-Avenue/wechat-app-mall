@@ -6,11 +6,6 @@
         <image src="{{item.pic}}_m" class="slide-image" mode="aspectFill" lazy-load="true" />
       </swiper-item>
     </swiper>
-    <view class="dots">
-      <block wx:for="{{goodsDetail.pics}}" wx:key="unique">
-        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
-      </block>
-    </view>
   </view>
   <view class="swiper-container" wx:if="{{goodsDetail.basicInfo.videoId}}">
     <video src="{{videoMp4Src}}" autoplay="true" loop="true" style='width:100%'></video>
