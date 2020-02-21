@@ -84,6 +84,9 @@ swiper-item image {
   padding: 24rpx;
   background-color: #F2f2f2;
 }
+.recommend-container{
+  padding-bottom: 0rpx;
+}
 .goods-box{
   width: 339rpx;
   height: 472rpx;

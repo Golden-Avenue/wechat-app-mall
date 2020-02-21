@@ -68,7 +68,7 @@
   <view class="weui-loadmore weui-loadmore_line" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">爆品推荐</view>
   </view>
-  <view class="goods-container" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
+  <view class="goods-container recommend-container" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
     <view class="goods-box" wx:for-items="{{goodsRecommend}}" wx:key="*this" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
         <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />
@@ -102,7 +102,6 @@
     </view>
   </view>
   <block wx:if="{{pingtuanList.length > 0 && activeCategoryId == 0}}">
-    <view class='space'></view>
     <view class="weui-loadmore weui-loadmore_line">
       <view class="weui-loadmore__tips weui-loadmore__tips_in-line">全民拼团</view>
     </view>
