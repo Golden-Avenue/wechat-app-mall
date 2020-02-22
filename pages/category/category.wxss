@@ -158,6 +158,11 @@ page,view,image,input {
   line-height: 22rpx;
 }
 
+.goods-container .goods .soldInfo .good-sales-box .car {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .goods-container .goods .soldInfo .good-sales-box .number {
   color: #d81e06;
   padding: 2px;
