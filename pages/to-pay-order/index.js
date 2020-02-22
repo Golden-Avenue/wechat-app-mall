@@ -12,6 +12,7 @@ Page({
     goodsJsonStr: "",
     orderType: "", //订单类型，购物车下单或立即支付下单，默认是购物车，
     pingtuanOpenId: undefined, //拼团的话记录团号
+    remark: '',
 
     hasNoCoupons: true,
     coupons: [],
@@ -77,12 +78,30 @@ Page({
     return aaa;
   },
 
+  remarkChange(e) {
+    this.data.remark = e.detail.value
+  },
+  goCreateOrder() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['nGIgcr7wB9Tc3S9yyQ7nZG8K2vxfyybQj_EHUlnsMU8',
+        'OzXfrN0eVLaL_ekrMlltxCYcVOImjiDWbEtLktSxijc'],
+      success(res) {
+
+      },
+      fail(e) {
+        console.error(e)
+      },
+      complete: (e) => {
+        this.createOrder(true)
+      },
+    })
+  },
   createOrder: function (e) {
     var that = this;
     var loginToken = wx.getStorageSync('token') // 用户登录 token
     var remark = ""; // 备注信息
     if (e) {
-      remark = e.detail.value.remark; // 备注信息
+      remark = this.data.remark; // 备注信息
     }
 
     let postData = {
@@ -156,66 +175,6 @@ Page({
         that.getMyCoupons();
         return;
       }
-      WXAPI.addTempleMsgFormid({
-        token: wx.getStorageSync('token'),
-        type: 'form',
-        formId: e.detail.formId
-      })
-      // 配置模板消息推送
-      var postJsonString = {};
-      postJsonString.keyword1 = {
-        value: res.data.dateAdd,
-        color: '#173177'
-      }
-      postJsonString.keyword2 = {
-        value: res.data.amountReal + '元',
-        color: '#173177'
-      }
-      postJsonString.keyword3 = {
-        value: res.data.orderNumber,
-        color: '#173177'
-      }
-      postJsonString.keyword4 = {
-        value: '订单已关闭',
-        color: '#173177'
-      }
-      postJsonString.keyword5 = {
-        value: '您可以重新下单，请在30分钟内完成支付',
-        color: '#173177'
-      }
-      WXAPI.sendTempleMsg({
-        module: 'order',
-        business_id: res.data.id,
-        trigger: -1,
-        postJsonString: JSON.stringify(postJsonString),
-        template_id: 'mGVFc31MYNMoR9Z-A9yeVVYLIVGphUVcK2-S2UdZHmg',
-        type: 0,
-        token: wx.getStorageSync('token'),
-        url: 'pages/index/index'
-      })
-      postJsonString = {};
-      postJsonString.keyword1 = {
-        value: '您的订单已发货，请注意查收',
-        color: '#173177'
-      }
-      postJsonString.keyword2 = {
-        value: res.data.orderNumber,
-        color: '#173177'
-      }
-      postJsonString.keyword3 = {
-        value: res.data.dateAdd,
-        color: '#173177'
-      }
-      WXAPI.sendTempleMsg({
-        module: 'order',
-        business_id: res.data.id,
-        trigger: 2,
-        postJsonString: JSON.stringify(postJsonString),
-        template_id: 'Arm2aS1rsklRuJSrfz-QVoyUzLVmU2vEMn_HgMxuegw',
-        type: 0,
-        token: wx.getStorageSync('token'),
-        url: 'pages/order-details/index?id=' + res.data.id
-      })
       // 下单成功，跳转到订单管理界面
       wx.redirectTo({
         url: "/pages/order-list/index"
