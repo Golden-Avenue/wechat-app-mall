@@ -72,8 +72,8 @@ Page({
   },
   goCreateOrder() {
     wx.requestSubscribeMessage({
-      tmplIds: ['ITVuuD_cwYN-5BjXne8cSktDo43xetj0u-lpvFZEQQs',
-        'dw9Tzh9r0sw7Gjab0ovQJx3bP3gdXmF_FZvpnxPd6hc'],
+      tmplIds: ['nGIgcr7wB9Tc3S9yyQ7nZG8K2vxfyybQj_EHUlnsMU8',
+        'OzXfrN0eVLaL_ekrMlltxCYcVOImjiDWbEtLktSxijc'],
       success(res) {
 
       },
