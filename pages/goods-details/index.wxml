@@ -155,7 +155,7 @@
     </view>
     <view class="goods-text" style="margin-top:15rpx;" wx:for="{{reputation}}" wx:key="id">
       <view style="width:100rpx;float:left;">
-        <image style="width: 100rpx; height: 100rpx;" src="{{item.user.avatarUrl}}"></image>
+        <image style="width: 100rpx; height: 100rpx; border-radius: 50%;" src="{{item.user.avatarUrl}}"></image>
         <view style="text-align:center;width:100rpx;">{{item.goods.goodReputationStr}}</view>
       </view>
       <view style="width:550rpx;float:left;margin-left:35rpx;border-bottom:1px solid #eee;">
