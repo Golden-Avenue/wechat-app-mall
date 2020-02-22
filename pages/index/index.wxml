@@ -65,7 +65,7 @@
             </view>
         </scroll-view>
     </view>
-  <view class="weui-loadmore weui-loadmore_line" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
+  <view class="weui-loadmore weui-loadmore_line part-title" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">
     <view class="weui-loadmore__tips weui-loadmore__tips_in-line">爆品推荐</view>
   </view>
   <view class="goods-container recommend-container" wx:if="{{goodsRecommend.length > 0 && activeCategoryId == 0}}">

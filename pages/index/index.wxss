@@ -76,6 +76,9 @@ swiper-item image {
 .weui-loadmore {
   margin-bottom: 0px;
 }
+.part-title {
+  margin-top:24rpx;
+}
 .goods-container{
   display: flex;
   justify-content: space-between;  
