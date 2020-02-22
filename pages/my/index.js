@@ -28,7 +28,7 @@ Page({
   aboutUs : function () {
     wx.showModal({
       title: '关于我们',
-      content: '本系统基于Oejia客优商城系统 www.calluu.cn 搭建，欢迎垂询',
+      content: '本系统基于OE商城系统 www.calluu.cn 搭建，欢迎垂询',
       showCancel:false
     })
   },
