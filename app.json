@@ -10,6 +10,7 @@
     "pages/address-add/index",
     "pages/order-list/index",
     "pages/order-details/index",
+    "pages/order/refundApply",
     "pages/wuliu/index",
     "pages/my/index",
     "pages/notice/show",
@@ -28,7 +29,9 @@
     "pages/fx/apply-status",
     "pages/fx/members",
     "pages/fx/commisionLog",
-    "pages/coupons/index"
+    "pages/coupons/index",
+    "pages/invoice/list",
+    "pages/invoice/apply"
   ],
   "window": {
     "backgroundTextStyle": "light",

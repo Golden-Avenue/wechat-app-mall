@@ -29,7 +29,7 @@ Page({
   aboutUs : function () {
     wx.showModal({
       title: '关于我们',
-      content: 'Oejia 客优云，是一个服务于企业快速业务开发实现的技术服务商，提供优质的企业方案顾问，用于快速、便捷地实现各种基于 Odoo 的业务场景',
+      content: '本系统基于OE商城系统 www.calluu.cn 搭建，欢迎垂询',
       showCancel:false
     })
   },
