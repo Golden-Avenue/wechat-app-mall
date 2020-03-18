@@ -47,6 +47,12 @@ Page({
       url: "/pages/order/refundApply?id=" + orderId + "&amount=" + amount
     })
   },
+  toDetail(e) {
+    const orderId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "/pages/order-details/index?id=" + orderId
+    })
+  },
   toPayTap: function(e) {
     const that = this;
     const orderId = e.currentTarget.dataset.id;
