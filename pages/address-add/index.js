@@ -81,7 +81,7 @@ Page({
     const pObject = this.data.pickerRegionRange[0][e.detail.value[0]]
     const cObject = this.data.pickerRegionRange[1][e.detail.value[1]]
     const dObject = this.data.pickerRegionRange[2][e.detail.value[2]]
-    const showRegionStr = pObject.name + cObject.name + dObject.name
+    const showRegionStr = pObject.name + cObject.name + (dObject ? dObject.name : '')
     this.setData({
       pObject: pObject,
       cObject: cObject,
@@ -157,14 +157,6 @@ Page({
       wx.showModal({
         title: '提示',
         content: '请填写详细地址',
-        showCancel:false
-      })
-      return
-    }
-    if (code == ""){
-      wx.showModal({
-        title: '提示',
-        content: '请填写邮编',
         showCancel:false
       })
       return
