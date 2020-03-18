@@ -17,7 +17,7 @@ page {
   width: 200rpx;
   /* min-width: 200rpx; */
   flex-shrink: 0;
-  background-color: #eee;
+  background-color: rgb(247, 247, 247);
 }
 
 .right {
@@ -34,9 +34,17 @@ page {
   align-items: center;
   justify-content: center;
 }
-
+.category-item text {
+  font-size: 12px;
+  color: gray
+}
 .category-item-active {
   background-color: white;
+  border-left: 4rpx solid #d81e06;
+}
+.category-item-active text {
+  color: #d81e06;
+  font-weight: bold;
 }
 
 .goodsWrap-category {
