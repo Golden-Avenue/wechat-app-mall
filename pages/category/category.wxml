@@ -6,7 +6,7 @@
     <block wx:for="{{categories}}" wx:key="id">
 
       <view class="category-item {{categorySelected==item.scrollId?'category-item-active':''}}" data-id='{{item.scrollId}}' id='{{item.scrollId}}' bindtap='onCategoryClick'>
-        <text style="font-size: 12px; color: gray">{{item.name}}</text>
+        <text>{{item.name}}</text>
       </view>
 
     </block>
