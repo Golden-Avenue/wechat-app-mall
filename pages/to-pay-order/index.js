@@ -72,8 +72,7 @@ Page({
   },
   goCreateOrder() {
     wx.requestSubscribeMessage({
-      tmplIds: ['nGIgcr7wB9Tc3S9yyQ7nZG8K2vxfyybQj_EHUlnsMU8',
-        'OzXfrN0eVLaL_ekrMlltxCYcVOImjiDWbEtLktSxijc'],
+      tmplIds: wx.getStorageSync('msgtpl_id_list'),
       success(res) {
 
       },

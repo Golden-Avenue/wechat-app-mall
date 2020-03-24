@@ -77,6 +77,13 @@ App({
         that.globalData.recharge_amount_min = res.data.value;
       }
     })
+    WXAPI.queryConfig({
+      key: 'msgtpl_id_list'
+    }).then(function (res) {
+      if (res.code == 0) {
+        wx.setStorageSync('msgtpl_id_list', res.data.value);
+      }
+    })
     // 获取砍价设置
     WXAPI.kanjiaList().then(function(res) {
       if (res.code == 0) {
