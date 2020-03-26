@@ -5,6 +5,7 @@ Page({
   data: {
     totalScoreToPay: 0,
     goodsList: [],
+    orderLines: [],
     isNeedLogistics: 0, // 是否需要物流信息
     allGoodsPrice: 0,
     yunPrice: 0,
@@ -155,9 +156,18 @@ Page({
           isNeedLogistics: res.data.isNeedLogistics,
           allGoodsPrice: res.data.amountTotle,
           allGoodsAndYunPrice: res.data.amountLogistics + res.data.amountTotle,
+          orderLines: res.data.orderLines,
           yunPrice: res.data.amountLogistics
         });
         that.getMyCoupons();
+        var extra = res.data.extra;
+        if (extra && extra.tips) {
+          wx.showModal({
+            title: '提示',
+            content: extra.tips,
+            showCancel: false
+          })
+        } 
         return;
       }
       // 下单成功，跳转到订单管理界面
