@@ -92,7 +92,7 @@ Page({
       if (res.code == 700 || res.code == 404) {
         wx.showModal({
           title: '提示',
-          content: '请在后台添加 banner 轮播图片，自定义类型填写 new',
+          content: '请在后台添加 banner 横幅图，位置选择首页',
           showCancel: false
         })
       } else {
@@ -136,7 +136,7 @@ Page({
         })
       }      
     })
-
+    
     that.getCoupons()
     that.getNotice()
     //that.kanjiaGoods()

@@ -83,8 +83,7 @@ Page({
   },
   goCreateOrder() {
     wx.requestSubscribeMessage({
-      tmplIds: ['nGIgcr7wB9Tc3S9yyQ7nZG8K2vxfyybQj_EHUlnsMU8',
-        'OzXfrN0eVLaL_ekrMlltxCYcVOImjiDWbEtLktSxijc'],
+      tmplIds: wx.getStorageSync('msgtpl_id_list'),
       success(res) {
 
       },
@@ -119,10 +118,9 @@ Page({
     if (that.data.isNeedLogistics > 0 && postData.peisongType == 'kd') {
       if (!that.data.curAddressData) {
         wx.hideLoading();
-        wx.showModal({
-          title: '错误',
-          content: '请先设置您的收货地址！',
-          showCancel: false
+        wx.showToast({
+          title: '请设置收货地址',
+          icon: 'none'
         })
         return;
       }
