@@ -139,7 +139,7 @@ Page({
     
     that.getCoupons()
     that.getNotice()
-    //that.kanjiaGoods()
+    that.kanjiaGoods()
     that.pingtuanGoods()
   },
   onShow: function(e){
