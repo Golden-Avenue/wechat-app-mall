@@ -179,7 +179,7 @@
       </view>
     </view>
   </view>
-  <view class='kjBuyButton' wx:if="{{curGoodsKanjia}}">
+  <view class='kjBuyButton' wx:if="{{curGoodsKanjia && (curKanjiaprogress && curKanjiaprogress.kanjiaInfo.uid == curuid)}}">
     <button class="weui-btn" type="warn" bindtap="tobuy">用当前价购买</button>
   </view>
   <view wx:if="{{!curGoodsKanjia}}" class="footer-box safeAreaOldPaddingBttom safeAreaNewPaddingBttom">

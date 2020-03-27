@@ -16,6 +16,7 @@ Page({
     selectSizePrice: 0,
     totalScoreToPay: 0,
     shopNum: 0,
+    curuid: wx.getStorageSync('uid'),
     hideShopPopup: true,
     buyNumber: 0,
     buyNumMin: 1,
@@ -68,7 +69,10 @@ Page({
   async getGoodsDetailAndKanjieInfo(goodsId) {
     const that = this;
     const goodsDetailRes = await WXAPI.goodsDetail(goodsId)
-    const goodsKanjiaSetRes = {};//await WXAPI.kanjiaSet(goodsId)
+    let goodsKanjiaSetRes = {}
+    if (goodsDetailRes.data.basicInfo.kanjia) {
+      goodsKanjiaSetRes = await WXAPI.kanjiaSet(goodsId)
+    }
     if (goodsDetailRes.code == 0) {
       var selectSizeTemp = SelectSizePrefix;
       if (goodsDetailRes.data.properties) {
@@ -137,7 +141,7 @@ Page({
   tobuy: function() {
     this.setData({
       shopType: "tobuy",
-      selectSizePrice: this.data.goodsDetail.basicInfo.minPrice
+      selectSizePrice: this.data.curKanjiaprogress.kanjiaInfo.curPrice
     });
     this.bindGuiGeTap();
   },
