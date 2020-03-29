@@ -379,6 +379,12 @@ swiper-item image {
   padding:20rpx;
   text-align: center;
 }
+.weui-cell__bd {
+  font-size: 28rpx;
+}
+.weui-cell__ft {
+  font-size: 28rpx;
+}
 .curKanjiaprogress .weui-badge {
   margin-left:250rpx;
 }
