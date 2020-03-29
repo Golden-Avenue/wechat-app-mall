@@ -141,7 +141,7 @@ Page({
   tobuy: function() {
     this.setData({
       shopType: "tobuy",
-      selectSizePrice: this.data.curKanjiaprogress.kanjiaInfo.curPrice
+      selectSizePrice: this.data.curKanjiaprogress ? this.data.curKanjiaprogress.kanjiaInfo.curPrice : this.data.goodsDetail.basicInfo.minPrice,
     });
     this.bindGuiGeTap();
   },
