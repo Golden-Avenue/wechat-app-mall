@@ -151,7 +151,7 @@ Page({
     let categories = [];
     if (res.code == 0) {
       const _categories = res.data.filter(ele => {
-        return ele.level == 1
+        return true;//ele.level == 1
       })
       categories = categories.concat(_categories)
     }
