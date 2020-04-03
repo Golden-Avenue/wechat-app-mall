@@ -75,8 +75,14 @@ Page({
     // }
     if (e && e.scene) {
       const scene = decodeURIComponent(e.scene)
-      if (scene) {        
-        wx.setStorageSync('referrer', scene.substring(11))
+      var items = scene.split("&");
+      var result = {};
+      for (var i = 0; i < items.length; i++) {
+        var arr = items[i].split("=");
+        result[arr[0]] = arr[1];
+      }
+      if (result.i) {        
+        wx.setStorageSync('referrer', result.i)
       }
     }
     wx.setNavigationBarTitle({

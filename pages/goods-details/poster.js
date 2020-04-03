@@ -78,7 +78,7 @@ Page({
     const _this = this
     WXAPI.wxaQrcode({
       token: wx.getStorageSync('token'),
-      scene: _this.data.goodsid +',' + wx.getStorageSync('uid'),
+      scene: 'g=' + _this.data.goodsid + '&i=' + wx.getStorageSync('uid'),
       page: 'pages/goods-details/index',
       is_hyaline: true,
       expireHours: 1
