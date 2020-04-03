@@ -40,9 +40,15 @@ Page({
   async onLoad(e) {
     if (e && e.scene) {
       const scene = decodeURIComponent(e.scene) // 处理扫码进商品详情页面的逻辑
-      if (scene) {
-        e.id = scene.split(',')[0]
-        wx.setStorageSync('referrer', scene.split(',')[1])
+      var items = scene.split("&");
+      var result = {};
+      for (var i = 0; i < items.length; i++) {
+        var arr = items[i].split("=");
+        result[arr[0]] = arr[1];
+      }
+      e.id = result.g;
+      if (result.i) {        
+        wx.setStorageSync('referrer', result.i)
       }
     }
     this.data.goodsId = e.id

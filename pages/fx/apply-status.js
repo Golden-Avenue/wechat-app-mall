@@ -70,7 +70,7 @@ Page({
     })
     WXAPI.wxaQrcode({
       token: wx.getStorageSync('token'),
-      scene: 'inviter_id=' + wx.getStorageSync('uid'),
+      scene: 'i=' + wx.getStorageSync('uid'),
       page: 'pages/index/index',
       is_hyaline: true,
       expireHours: 1
@@ -137,7 +137,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '"' + wx.getStorageSync('mallName') + '" ' + CONFIG.shareProfile,
-      path: '/pages/index/index?inviter_id=' + wx.getStorageSync('uid'),
+      path: '/pages/index/index?inviter_id=' + wx.getStorageSync('uid'),//???
       success: function (res) {
         // 转发成功
       },
