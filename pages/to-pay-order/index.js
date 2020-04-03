@@ -280,5 +280,6 @@ Page({
     this.setData({
       peisongType: e.detail.value
     })
+    this.processYunfei();
   }
 })
