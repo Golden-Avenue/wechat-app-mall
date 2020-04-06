@@ -165,7 +165,7 @@ App({
       }
     }
     this.navigateToLogin = false
-    this.checkLoginStatus()
+    //this.checkLoginStatus()
   },
   checkLoginStatus(){ // 检测登录状态
     const _this = this
