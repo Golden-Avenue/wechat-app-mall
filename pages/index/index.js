@@ -30,6 +30,7 @@ Page({
     loadingMoreHidden: true,
 
     coupons: [],
+    couponOpen: false,
 
     curPage: 1,
     pageSize: 20,
@@ -141,6 +142,15 @@ Page({
           goodsRecommend: res.data
         })
       }      
+    })
+    let couponOpen = wx.getStorageSync('coupon_open')
+    if (!couponOpen && couponOpen == '1') {
+      couponOpen = true
+    } else {
+      couponOpen = false
+    }
+    this.setData({
+      couponOpen: couponOpen
     })
     
     that.getCoupons()
