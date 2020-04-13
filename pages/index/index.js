@@ -185,6 +185,7 @@ Page({
       let goods = [];
       if (append) {
         goods = that.data.goods
+        that.refreshTotalPrice();
       }
       for (var i = 0; i < res.data.length; i++) {
         goods.push(res.data[i]);
