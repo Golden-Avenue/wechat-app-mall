@@ -20,6 +20,7 @@ Page({
     youhuijine: 0, //优惠券金额
     curCoupon: null, // 当前选择使用的优惠券
     curCouponShowText: '选择使用优惠券',
+    curDiscount: null,
     allowSelfCollection: '0', // 是否允许到店自提
     peisongType: 'kd' // 配送方式 kd,zq 分别表示快递/到店自取
   },
@@ -171,6 +172,7 @@ Page({
           allGoodsPrice: res.data.amountTotle,
           allGoodsAndYunPrice: res.data.amountLogistics + res.data.amountTotle,
           orderLines: res.data.orderLines,
+          curDiscount: res.data.discounts,
           yunPrice: res.data.amountLogistics
         });
         that.getMyCoupons();
@@ -274,6 +276,17 @@ Page({
     }
   },
   bindChangeCoupon: function (e) {
+    if (this.data.curDiscount) {
+      wx.showModal({
+        title: '提示',
+        content: '已经使用了满减优惠，不能叠加使用优惠券',
+        showCancel: false
+      })
+      this.setData({
+        curCouponShowText: '选择使用优惠券'
+      });
+      return
+    }
     const selIndex = e.detail.value;
     this.setData({
       youhuijine: this.data.coupons[selIndex].money,
