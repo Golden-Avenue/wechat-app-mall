@@ -73,14 +73,29 @@ Page({
   onShareAppMessage: function () {
 
   },
-  bindSave: function (e) {
-    WXAPI.addTempleMsgFormid({
-      token: wx.getStorageSync('token'),
-      type: 'form',
-      formId: e.detail.formId
+  nameChange(e){
+    this.data.name = e.detail.value
+  },
+  mobileChange(e){
+    this.data.mobile = e.detail.value
+  },
+  bindSave(){
+    wx.requestSubscribeMessage({
+      tmplIds: [wx.getStorageSync('msgtpl_fx_notify')],
+      success(res) {
+
+      },
+      fail(e) {
+        console.error(e)
+      },
+      complete: (e) => {
+        this.bindSaveDone()
+      },
     })
-    const name = e.detail.value.name
-    const mobile = e.detail.value.mobile
+  },
+  bindSaveDone: function () {
+    const name = this.data.name
+    const mobile = this.data.mobile
     if (!name) {
       wx.showToast({
         title: '请输入真实姓名',
@@ -103,7 +118,6 @@ Page({
         })
         return
       }
-      this.subcriptionTmplMsg(res.data)
       wx.navigateTo({
         url: "/pages/fx/apply-status"
       })
