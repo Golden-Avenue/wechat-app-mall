@@ -9,6 +9,7 @@ Page({
     freeze:0,
     score:0,
     score_sign_continuous:0,
+    couponOpen: false,
     rechargeOpen: false // 是否开启充值[预存]功能
   },
 	onLoad() {
@@ -18,7 +19,14 @@ Page({
     } else {
       rechargeOpen = false
     }
+    let couponOpen = wx.getStorageSync('coupon_open')
+    if (couponOpen && couponOpen == '1') {
+      couponOpen = true
+    } else {
+      couponOpen = false
+    }
     this.setData({
+      couponOpen: couponOpen,
       rechargeOpen: rechargeOpen
     })
 	},	

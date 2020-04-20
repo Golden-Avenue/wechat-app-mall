@@ -144,7 +144,7 @@ Page({
       }      
     })
     let couponOpen = wx.getStorageSync('coupon_open')
-    if (!couponOpen && couponOpen == '1') {
+    if (couponOpen && couponOpen == '1') {
       couponOpen = true
     } else {
       couponOpen = false
