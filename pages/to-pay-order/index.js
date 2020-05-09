@@ -8,6 +8,7 @@ Page({
     orderLines: [],
     isNeedLogistics: 0, // 是否需要物流信息
     allGoodsPrice: 0,
+    taxPrice: 0,
     yunPrice: 0,
     allGoodsAndYunPrice: 0,
     goodsJsonStr: "",
@@ -170,9 +171,10 @@ Page({
           totalScoreToPay: res.data.score,
           isNeedLogistics: res.data.isNeedLogistics,
           allGoodsPrice: res.data.amountTotle,
-          allGoodsAndYunPrice: res.data.amountLogistics + res.data.amountTotle,
+          allGoodsAndYunPrice: res.data.amountLogistics + res.data.amountTotle + (res.data.amountTax || 0),
           orderLines: res.data.orderLines,
           curDiscount: res.data.discounts,
+          taxPrice: res.data.amountTax || 0,
           yunPrice: res.data.amountLogistics
         });
         that.getMyCoupons();

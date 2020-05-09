@@ -67,6 +67,10 @@
             <view class="row-label">运费</view>
             <view class="right-text">+ ¥ {{yunPrice}}</view>
         </view>
+        <view class="row-box" wx:if="{{taxPrice > 0}}">
+            <view class="row-label">税</view>
+            <view class="right-text">+ ¥ {{taxPrice}}</view>
+        </view>
         <view class="row-box" wx:if="{{!hasNoCoupons}}">
             <view class="row-label">优惠券</view>
             <view class="right-text">- ¥ {{youhuijine}}</view>

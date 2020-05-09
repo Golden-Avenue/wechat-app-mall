@@ -122,6 +122,10 @@
                 <view class="row-label">运费</view>
                 <view class="right-text">+ ¥ {{orderDetail.orderInfo.amountLogistics}}</view>
             </view>
+            <view class="row-box" wx:if="{{orderDetail.orderInfo.amountTax && orderDetail.orderInfo.amountTax > 0}}">
+                <view class="row-label">税</view>
+                <view class="right-text">+ ¥ {{orderDetail.orderInfo.amountTax}}</view>
+            </view>
             <view class="row-box">
                 <view class="row-label">应付总额</view>
                 <view class="right-text">¥ {{orderDetail.orderInfo.amountReal}}</view>
