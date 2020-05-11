@@ -207,3 +207,4 @@ page,view,image,input {
   font-size: 24rpx;
   color: #666;
 }
+@import "../template-jiesuan/template-jiesuan.wxss";

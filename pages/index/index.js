@@ -34,6 +34,12 @@ Page({
 
     curPage: 1,
     pageSize: 20,
+    jiesuanInfo: {
+      hideSummaryPopup: true,
+      totalPrice: 0,
+      totalScore: 0,
+      shopNum: 0
+    },
     cateScrollTop: 0
   },
 
@@ -215,6 +221,7 @@ Page({
       let goods = [];
       if (append) {
         goods = that.data.goods
+        that.refreshTotalPrice();
       }
       for (var i = 0; i < res.data.length; i++) {
         goods.push(res.data[i]);
@@ -311,6 +318,85 @@ Page({
   goCoupons: function (e) {
     wx.navigateTo({
       url: "/pages/coupons/index"
+    })
+  },
+  onTotalPriceChange: function (e) {
+    let hideSummaryPopup = true;
+    if (e.detail.totalPrice > 0) {
+      hideSummaryPopup = false;
+    }
+    this.setData({
+      jiesuanInfo: {
+        hideSummaryPopup: hideSummaryPopup,
+        totalPrice: e.detail.totalPrice,
+        totalScore: e.detail.totalScore,
+        shopNum: e.detail.shopNum
+      }
+    });
+
+  },
+  navigateToCartShop: function () {
+    wx.hideLoading();
+    wx.switchTab({
+      url: "/pages/shop-cart/index"
+    })
+  },
+  onShow: function () {
+    this.refreshTotalPrice();
+  },
+  resetGoodsBuyNum: function () {
+    var goods = this.data.goods;
+    if (goods.length > 0) {
+      for (var i = 0; i < goods.length; i++) {
+        goods[i].buyNum = 0;
+      }
+    }
+  },
+  refreshTotalPrice: function () {
+    var shopCarInfo = wx.getStorageSync('shopCarInfo');
+    var goods = this.data.goods;
+    this.resetGoodsBuyNum();
+    let hideSummaryPopup = true;
+    let totalPrice = 0;
+    let totalScore = 0;
+    let shopNum = 0;
+    if (shopCarInfo) {
+      totalPrice = shopCarInfo.totalPrice;
+      totalScore = shopCarInfo.totalScore;
+      shopNum = shopCarInfo.shopNum;
+
+      if (shopNum > 0 && shopCarInfo.shopList && shopCarInfo.shopList.length > 0) {
+        hideSummaryPopup = false;
+        if (goods.length > 0) {
+          for (var j = 0; j < shopCarInfo.shopList.length; j++) {
+            var tmpShopCarMap = shopCarInfo.shopList[j];
+            if (tmpShopCarMap.active) {
+              for (var i = 0; i < goods.length; i++) {
+                if (tmpShopCarMap.goodsId === goods[i].id) {
+                  goods[i].buyNum = tmpShopCarMap.number;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    this.setData({
+      jiesuanInfo: {
+        hideSummaryPopup: hideSummaryPopup,
+        totalPrice: totalPrice,
+        totalScore: totalScore,
+        shopNum: shopNum,
+      },
+      goods: goods
+    });
+  },
+  navigateToPayOrder: function (e) {
+    wx.hideLoading();
+    wx.navigateTo({
+      url: "/pages/to-pay-order/index"
     })
   },
   pingtuanGoods(){ // 获取团购商品列表
