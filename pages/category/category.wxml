@@ -46,7 +46,7 @@
         <view class='soldInfo'>
           <view class='good-sales-box'>
             <text></text>
-            <image class="car" src="/images/icon/car.svg"></image>
+            <addSubGoods goodsId="{{item.id}}" goodsDetail="{{item}}" buyNum="{{item.buyNum}}" stores="{{item.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
           </view>
         </view>
       </view>
