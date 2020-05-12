@@ -1,4 +1,5 @@
 const WXAPI = require('../../../wxapi/main')
+const TOOLS = require('../../../utils/tools.js')
 var app = getApp();
 Component({
   properties: {
@@ -93,6 +94,7 @@ Component({
         shopNum: shopCarInfo.shopNum
       };
       this.triggerEvent("totalPriceChange", data);
+      TOOLS.showTabBarBadge();
     },
 
     /**
@@ -129,6 +131,7 @@ Component({
         shopNum: shopCarInfo.shopNum
       };
       this.triggerEvent("totalPriceChange", data);
+      TOOLS.showTabBarBadge();
     },
 
     updateShopList: function(shopList, shopCarMap) {
