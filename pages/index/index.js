@@ -167,6 +167,7 @@ Page({
   onShow: function(e){
     // 获取购物车数据，显示TabBarBadge
     TOOLS.showTabBarBadge();
+    this.refreshTotalPrice();
   },
   async categories(){
     const res = await WXAPI.goodsCategory()
@@ -221,7 +222,6 @@ Page({
       let goods = [];
       if (append) {
         goods = that.data.goods
-        that.refreshTotalPrice();
       }
       for (var i = 0; i < res.data.length; i++) {
         goods.push(res.data[i]);
@@ -230,6 +230,7 @@ Page({
         loadingMoreHidden: true,
         goods: goods,
       });
+      that.refreshTotalPrice();
     })
   },
   getCoupons: function() {
@@ -340,9 +341,6 @@ Page({
     wx.switchTab({
       url: "/pages/shop-cart/index"
     })
-  },
-  onShow: function () {
-    this.refreshTotalPrice();
   },
   resetGoodsBuyNum: function () {
     var goods = this.data.goods;

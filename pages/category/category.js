@@ -75,6 +75,7 @@ Page({
     this.setData({
       currentGoods: res.data
     });
+    this.refreshTotalPrice();
   },
   toDetailsTap: function(e) {
     wx.navigateTo({
@@ -134,19 +135,16 @@ Page({
     this.refreshTotalPrice();
   },
   resetGoodsBuyNum: function () {
-    var goodsWrap = this.data.goodsWrap;
+    var goodsWrap = this.data.currentGoods;
     if (goodsWrap.length > 0) {
       for (var i = 0; i < goodsWrap.length; i++) {
-        var goods = goodsWrap[i].goods;
-        for (var j = 0; j < goods.length; j++) {
-          goods[j].buyNum = 0;
-        }
+        goodsWrap[i].buyNum = 0;
       }
     }
   },
   refreshTotalPrice: function () {
     var shopCarInfo = wx.getStorageSync('shopCarInfo');
-    var goodsWrap = this.data.goodsWrap;
+    var goodsWrap = this.data.currentGoods;
     this.resetGoodsBuyNum();
     let hideSummaryPopup = true;
     let totalPrice = 0;
@@ -164,12 +162,8 @@ Page({
             var tmpShopCarMap = shopCarInfo.shopList[j];
             if (tmpShopCarMap.active) {
               for (var i = 0; i < goodsWrap.length; i++) {
-                var goods = goodsWrap[i].goods;
-                for (var p = 0; p < goods.length; p++) {
-                  if (tmpShopCarMap.goodsId === goods[p].id) {
-                    goods[p].buyNum = tmpShopCarMap.number;
-                    break;
-                  }
+                if (tmpShopCarMap.goodsId === goodsWrap[i].id) {
+                  goodsWrap[i].buyNum = tmpShopCarMap.number;
                 }
               }
             }
@@ -185,7 +179,7 @@ Page({
         totalScore: totalScore,
         shopNum: shopNum,
       },
-      goodsWrap: goodsWrap
+      currentGoods: goodsWrap
     });
   },
   navigateToPayOrder: function (e) {
