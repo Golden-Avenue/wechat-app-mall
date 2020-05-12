@@ -33,11 +33,11 @@
         </view>
       </block>
       
-      <view class="goods" wx:for="{{currentGoods}}" wx:key="id" wx:for-item="item" data-id='{{item.id}}' bindtap="toDetailsTap">
-        <image mode="aspectFill" class="pic" src="{{item.pic}}">
+      <view class="goods" wx:for="{{currentGoods}}" wx:key="id" wx:for-item="item">
+        <image mode="aspectFill" class="pic" src="{{item.pic}}" data-id='{{item.id}}' bindtap="toDetailsTap">
           <!-- <image class='fresh-tag' src="/images/goods-description/fresh.png"></image> -->
         </image>
-        <view class="name ellipsis">{{item.name}}</view>
+        <view class="name ellipsis" data-id='{{item.id}}' bindtap="toDetailsTap">{{item.name}}</view>
         <view class='soldInfo'>
           <view class='good-price-box'>
             <text class="price">¥{{item.minPrice}}</text>
