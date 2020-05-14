@@ -40,7 +40,7 @@
         <view class="name ellipsis" data-id='{{item.id}}' bindtap="toDetailsTap">{{item.name}}</view>
         <view class='soldInfo'>
           <view class='good-price-box'>
-            <text class="price">¥{{item.minPrice}}</text>
+            <text class="price">AED{{item.minPrice}}</text>
           </view>
         </view>
         <view class='soldInfo'>

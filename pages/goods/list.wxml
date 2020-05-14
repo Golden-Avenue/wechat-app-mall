@@ -17,7 +17,7 @@
     <image class="img" mode="aspectFill" src="{{item.pic}}"></image>
     <view class="goods-info">
       <view class="title">{{item.name}}</view>
-      <view class="price">¥ {{item.minPrice}}</view>
+      <view class="price">AED {{item.minPrice}}</view>
       <view class="buy-info">
         <view class="num"></view>
         <image class="car" src="/images/icon/car.svg"></image>
@@ -31,7 +31,7 @@
       <image class="img" mode="aspectFill" src="{{item.pic}}"></image>
       <view class="goods-info">
         <view class="title">{{item.name}}</view>
-        <view class="price">¥ {{item.minPrice}}</view>
+        <view class="price">AED {{item.minPrice}}</view>
         <view class="buy-info">
           <view class="num">{{item.numberSells}}人已购买</view>
           <image class="car" src="/images/icon/car.svg"></image>

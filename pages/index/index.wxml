@@ -75,8 +75,8 @@
       </view>
       <view class="goods-title">{{item.name}}</view>
       <view style='display:flex;'>
-        <view class="goods-price">¥ {{item.minPrice}}</view>
-        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+        <view class="goods-price">AED {{item.minPrice}}</view>
+        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>AED {{item.originalPrice}}</view>
       </view>
     </view>
   </view>
@@ -135,8 +135,8 @@
       </view>
       <view class="goods-title">{{item.name}}</view>
       <view style='display:flex;'>
-        <view class="goods-price">¥ {{item.minPrice}}</view>
-        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+        <view class="goods-price">AED {{item.minPrice}}</view>
+        <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>AED {{item.originalPrice}}</view>
         <addSubGoods goodsId="{{item.id}}" goodsDetail="{{item}}" buyNum="{{item.buyNum}}" stores="{{item.stores}}" bind:totalPriceChange='onTotalPriceChange'></addSubGoods>
       </view>
     </view>

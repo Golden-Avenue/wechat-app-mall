@@ -20,7 +20,7 @@
    </view>
    <view class="goods-info">
         <view class="goods-title">{{goodsDetail.basicInfo.name}}</view>
-        <view class="goods-price" style="padding-left:35rpx;">当前价格: ¥ {{kanjiaInfo.kanjiaInfo.curPrice}} , 底价 ¥ {{kanjiaInfo.kanjiaInfo.minPrice}} </view>
+        <view class="goods-price" style="padding-left:35rpx;">当前价格: AED {{kanjiaInfo.kanjiaInfo.curPrice}} , 底价 AED {{kanjiaInfo.kanjiaInfo.minPrice}} </view>
         <view class="goods-price" style="color:#999;font-size:24rpx;padding-left:10rpx;"> (转发帮 {{kanjiaInfo.joiner.nick}} 砍价) </view>
     </view>
     <view class="goods-des-info">

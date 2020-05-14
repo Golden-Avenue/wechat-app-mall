@@ -8,7 +8,7 @@
             <view class="text-box">
                 <view class="arow arow01">
                     <view class="goods-name">{{item.name}}</view>
-                    <view class="goods-price">¥ {{orderLines.length>0 ? orderLines[index]['price_unit'] : item.price}}</view>
+                    <view class="goods-price">AED {{orderLines.length>0 ? orderLines[index]['price_unit'] : item.price}}</view>
                 </view>
                 <view class="arow">
                     <view class="goods-label">{{item.label}}</view>
@@ -72,25 +72,25 @@
      <view class="goods-info" wx:if="{{(isNeedLogistics > 0 && yunPrice > 0) || (!hasNoCoupons || taxPrice > 0)}}">
         <view class="row-box">
             <view class="row-label">商品金额</view>
-            <view class="right-text">¥ {{allGoodsPrice}}</view>
+            <view class="right-text">AED {{allGoodsPrice}}</view>
         </view>
         <view class="row-box" wx:if="{{isNeedLogistics > 0 && yunPrice > 0}}">
             <view class="row-label">运费</view>
-            <view class="right-text">+ ¥ {{yunPrice}}</view>
+            <view class="right-text">+ AED {{yunPrice}}</view>
         </view>
         <view class="row-box" wx:if="{{taxPrice > 0}}">
             <view class="row-label">税</view>
-            <view class="right-text">+ ¥ {{taxPrice}}</view>
+            <view class="right-text">+ AED {{taxPrice}}</view>
         </view>
         <view class="row-box" wx:if="{{!hasNoCoupons}}">
             <view class="row-label">优惠券</view>
-            <view class="right-text">- ¥ {{youhuijine}}</view>
+            <view class="right-text">- AED {{youhuijine}}</view>
         </view>
      </view>
 
      <view class="jiesuan-box safeAreaOldPaddingBttom safeAreaNewPaddingBttom">
         <view class="left-price">
-            <view class="total">合计：¥ {{allGoodsAndYunPrice - youhuijine}} + {{totalScoreToPay}} 积分</view>
+            <view class="total">合计：AED {{allGoodsAndYunPrice - youhuijine}} + {{totalScoreToPay}} 积分</view>
         </view>
         <button class="to-pay-btn" bindtap="goCreateOrder">提交订单</button>
     </view>

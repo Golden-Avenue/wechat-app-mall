@@ -22,8 +22,8 @@
       </scroll-view>
       <view class="goods-price">
         共 {{item.goodsNumber}} 件商品 合计：
-        <text class="p" wx:if="{{item.score <= 0}}">¥ {{item.amountReal}}</text>
-        <text class="p" wx:if="{{item.score > 0}}">¥ {{item.amountReal}} + {{item.score}} 积分</text>
+        <text class="p" wx:if="{{item.score <= 0}}">AED {{item.amountReal}}</text>
+        <text class="p" wx:if="{{item.score > 0}}">AED {{item.amountReal}} + {{item.score}} 积分</text>
       </view>
       <view class="goods-info">
         <view class="goods-des">

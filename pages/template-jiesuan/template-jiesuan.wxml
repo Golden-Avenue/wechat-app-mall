@@ -3,7 +3,7 @@
     <view class="left-price">
       <view class="shop-num">({{shopNum}})</view>
       <image src="/images/cart/totalCart.png" class="cart-btn" bindtap="navigateToCartShop" />
-      <view class="total">¥ {{totalPrice}} + {{totalScore}} 积分</view>
+      <view class="total">AED {{totalPrice}} + {{totalScore}} 积分</view>
     </view>
     <form bindsubmit="navigateToPayOrder" report-submit="true">
       <button wx:if="{{totalPrice > 0}}" class="to-pay-btn" formType="submit">去结算</button>

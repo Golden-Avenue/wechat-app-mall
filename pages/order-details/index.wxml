@@ -65,7 +65,7 @@
                 <view class="text-box">
                     <view class="arow arow01">
                         <view class="goods-name">{{item.goodsName}}</view>
-                        <view class="goods-price">¥ {{item.amount}}</view>
+                        <view class="goods-price">AED {{item.amount}}</view>
                     </view>
                     <view class="arow">
                         <view class="goods-label">{{item.property}}</view>
@@ -116,19 +116,19 @@
         <view class="goods-info">
             <view class="row-box">
                 <view class="row-label">商品金额</view>
-                <view class="right-text">¥ {{orderDetail.orderInfo.amount}}</view>
+                <view class="right-text">AED {{orderDetail.orderInfo.amount}}</view>
             </view>
             <view class="row-box">
                 <view class="row-label">运费</view>
-                <view class="right-text">+ ¥ {{orderDetail.orderInfo.amountLogistics}}</view>
+                <view class="right-text">+ AED {{orderDetail.orderInfo.amountLogistics}}</view>
             </view>
             <view class="row-box" wx:if="{{orderDetail.orderInfo.amountTax && orderDetail.orderInfo.amountTax > 0}}">
                 <view class="row-label">税</view>
-                <view class="right-text">+ ¥ {{orderDetail.orderInfo.amountTax}}</view>
+                <view class="right-text">+ AED {{orderDetail.orderInfo.amountTax}}</view>
             </view>
             <view class="row-box">
                 <view class="row-label">应付总额</view>
-                <view class="right-text">¥ {{orderDetail.orderInfo.amountReal}}</view>
+                <view class="right-text">AED {{orderDetail.orderInfo.amountReal}}</view>
             </view>
         </view>
 </view>
