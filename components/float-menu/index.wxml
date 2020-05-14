@@ -37,4 +37,5 @@
       <text>我的</text>
     </view>
   </navigator>
+  <contact-button style="margin-top: 50rpx;margin-left: 32rpx" type="default-dark" session-from="weapp" size="27">客服</contact-button>
 </view>
