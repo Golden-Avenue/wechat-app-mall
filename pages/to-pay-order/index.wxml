@@ -39,9 +39,20 @@
           </view>
         </view>
         <view class="row-box">
+ 	            <view class="row-label">支付选项</view>
+ 	            <radio-group bindchange="payTypeRadioChange">
+ 	              <label class="radio">
+ 	                <radio value="zxzf" checked="1" /> 在线支付
+ 	              </label>
+ 	              <label class="radio">
+ 	                <radio value="hdfk" /> 货到付款
+ 	              </label>
+ 	            </radio-group>
+ 	      </view>
+        <view class="row-box">
             <view class="row-label">备注</view>
             <view class="right-text">
-                <input bindinput="remarkChange" type="text" class="liuyan" placeholder="如需备注请输入" />
+                <input bindinput="remarkChange" type="text" class="liuyan" value="{{ payType=='hdfk' ? '货到付款' : '' }}" placeholder="如需备注请输入" />
             </view>
         </view>
      </view>

@@ -23,6 +23,7 @@ Page({
     curCouponShowText: '选择使用优惠券',
     curDiscount: null,
     allowSelfCollection: '0', // 是否允许到店自提
+    payType: 'zxzf',
     peisongType: 'kd' // 配送方式 kd,zq 分别表示快递/到店自取
   },
   onShow: function () {
@@ -190,7 +191,7 @@ Page({
       }
       // 下单成功，跳转到订单管理界面
       wx.redirectTo({
-        url: "/pages/order-list/index"
+        url: "/pages/order-list/index?payType=" + that.data.payType
       });
     })
   },
@@ -295,6 +296,11 @@ Page({
       curCoupon: this.data.coupons[selIndex],
       curCouponShowText: this.data.coupons[selIndex].nameExt
     });
+  },
+  payTypeRadioChange(e) {
+    this.setData({
+      payType: e.detail.value
+    })
   },
   radioChange (e) {
     this.setData({
