@@ -26,7 +26,7 @@ Component({
     showQrcodeImg: function (payType) {
       var that = this;
       wx.getImageInfo({
-        src: payType == 'wxpay' ? 'https://sale.calluu.cn/web/image/wxapp.wxacode/97/wxacode_img/' : 'https://sale.calluu.cn/web/image/wxapp.wxacode/10/wxacode_img/',
+        src: payType == 'wxpay' ? wx.getStorageSync('wxpay_img_url') : wx.getStorageSync('alipay_img_url'),
         success: (res) => {
           const imageSize = imageUtil(res.width, res.height)
           const qrcodeWidth = imageSize.windowWidth / 2
