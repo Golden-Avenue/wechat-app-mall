@@ -1,0 +1,23 @@
+<view class="modal-mask"></view>
+<view class="modal-dialog">
+  <view class="modal-title">选择支付方式</view>
+  <view class="modal-content">
+    <view style="width: 600rpx">
+      <radio-group bindchange="payTypeRadioChange">
+        <label class="radio">
+          <radio value="wxpay" checked="{{payType == 'wxpay'}}" /> 微信收款码
+        </label>
+        <label class="radio">
+          <radio value="alipay" checked="{{payType == 'alipay'}}" /> 支付宝收款码
+        </label>
+      </radio-group>
+    </view>
+    <view style="text-align:center;">
+      <canvas style="height: 200px;text-align:center;" canvas-id="myQrcode"></canvas>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="cancelModal">取消</view>
+    <view class="btn-confirm" bindtap="saveToMobile">保存图片</view>
+  </view>
+</view>

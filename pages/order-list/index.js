@@ -6,6 +6,7 @@ Page({
     statusType: ["待付款", "待发货", "待收货", "待评价", "已完成"],
     hasRefund: false,
     currentType: 0,
+    showPaySelect: false,
     tabClass: ["", "", "", "", ""]
   },
   statusTap: function(e) {
@@ -126,7 +127,22 @@ Page({
       wxpay.wxpay('order', money, orderId, "/pages/order-list/index");
     }
   },
+  onCancelSelect: function () {
+    this.setData({
+      showPaySelect: false
+    });
+  },
+  onPaySelect: function () {
+    this.setData({
+      showPaySelect: true
+    });
+  },
   onLoad: function(options) {
+    if (options.payType=='zxzf'){
+      this.setData({
+        showPaySelect: true
+      });
+    }
     if (options && options.type) {
       if (options.type == 99) {
         this.setData({
