@@ -176,6 +176,7 @@ Page({
           orderLines: res.data.orderLines,
           curDiscount: res.data.discounts,
           taxPrice: res.data.amountTax || 0,
+          toRMB: res.data.extra ? res.data.extra.toRMB : '',
           yunPrice: res.data.amountLogistics
         });
         that.getMyCoupons();

@@ -90,7 +90,13 @@
 
      <view class="jiesuan-box safeAreaOldPaddingBttom safeAreaNewPaddingBttom">
         <view class="left-price">
-            <view class="total">合计：AED {{allGoodsAndYunPrice - youhuijine}} + {{totalScoreToPay}} 积分</view>
+<wxs module="m1">
+  var numberToFix= function (value) {
+    return value.toFixed(2)
+  }
+ module.exports.numberToFix=numberToFix;
+</wxs>
+            <view class="total">合计：AED {{allGoodsAndYunPrice - youhuijine}} (RMB {{ m1.numberToFix((allGoodsAndYunPrice - youhuijine)*toRMB) }}) + {{totalScoreToPay}} 积分</view>
         </view>
         <button class="to-pay-btn" bindtap="goCreateOrder">提交订单</button>
     </view>
