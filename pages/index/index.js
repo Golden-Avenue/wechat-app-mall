@@ -259,11 +259,6 @@ Page({
       }
     })
   },
-  listenerSearchInput: function (e) {
-    this.setData({
-      inputVal: e.detail.value
-    })
-  },
   toSearch: function() {
     wx.navigateTo({
       url: '/pages/goods/list?name=' + this.data.inputVal,
